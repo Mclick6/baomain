@@ -7,18 +7,20 @@ extends Node
 var garden_scene = preload("res://garden.tscn")
 
 func _ready():
-	print("--- Main Scene Loaded Successfully ---") # Add this line
-	# Listen for the login_success signal
+	print("--- Main Scene Loaded Successfully ---")
 	Server.login_success.connect(_on_login_success)
-	
-	# REMOVED: Do NOT connect here anymore.
-	# Server.connect_to_server()
 
 func _on_login_success(player_data):
-	# When login is successful, store the player's data globally
+	# Store the basic player data globally
 	Global.player_data = player_data
-	
-	# Remove the login screen
+	Global.rings = player_data.get("rings", 0)
+	Global.inventory = player_data.get("inventory", {})
+
+	# Load the chao data into the ChaoManager
+	if player_data.has("chao_data") and player_data["chao_data"] is Array:
+		ChaoManager.chao_list = player_data["chao_data"]
+
+	# Now that all data is loaded, free the login screen
 	login_screen.queue_free()
 	
 	# Create an instance of the garden scene and add it to the game world

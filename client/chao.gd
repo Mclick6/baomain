@@ -53,7 +53,6 @@ func _physics_process(delta):
 			if ChatManager: ChatManager.add_chat_message("Chao %s finished treadmill training!" % chao_name)
 		_update_garden_stats_display_safe()
 
-
 	var chao_data = ChaoManager.get_chao_data(chao_name)
 	if chao_data:
 		var current_stats = chao_data.get("stats", stats)
@@ -100,7 +99,7 @@ func _handle_idle_state(_delta: float):
 		velocity = Vector2.ZERO
 		move_and_slide()
 
-func _handle_wandering_state(delta: float):
+func _handle_wandering_state(_delta: float):
 	var direction = (target_position - position).normalized()
 	velocity = direction * move_speed
 	if position.distance_to(target_position) < 10.0:
@@ -109,7 +108,7 @@ func _handle_wandering_state(delta: float):
 	else:
 		move_and_slide()
 
-func _handle_moving_to_item(delta: float):
+func _handle_moving_to_item(_delta: float):
 	if not is_instance_valid(target_item):
 		state = "idle"
 		target_item = null
@@ -122,7 +121,7 @@ func _handle_moving_to_item(delta: float):
 	else:
 		move_and_slide()
 
-func _handle_chasing_ball(delta: float):
+func _handle_chasing_ball(_delta: float):
 	if not is_instance_valid(target_item):
 		state = "idle"
 		target_item = null
@@ -135,7 +134,7 @@ func _handle_chasing_ball(delta: float):
 	else:
 		move_and_slide()
 
-func _handle_moving_to_treadmill(delta: float):
+func _handle_moving_to_treadmill(_delta: float):
 	if not is_instance_valid(target_item):
 		state = "idle"
 		target_item = null
@@ -273,16 +272,13 @@ func deserialize(data: Dictionary):
 		chao_name = data["chao_name"]
 	if data.has("position"):
 		position = Vector2(data["position"].x, data["position"].y)
+	
+	# CORRECTED: This now directly and completely loads the stats from the server
 	if data.has("stats"):
-		var loaded_stats = data["stats"]
-		for key in stats.keys():
-			if loaded_stats.has(key):
-				var loaded_value = loaded_stats[key]
-				if stats[key] is Dictionary:
-					if loaded_value is Dictionary:
-						stats[key] = loaded_value.duplicate(true)
-				else:
-					stats[key] = loaded_value
+		# The .duplicate(true) makes a deep copy to ensure each Chao has its
+		# own unique stats dictionary.
+		stats = data["stats"].duplicate(true)
+		
 	_update_animation()
 
 func get_chao_name() -> String:

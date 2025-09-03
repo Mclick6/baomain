@@ -26,6 +26,7 @@ func _ready():
 		inventory_panel.visible = false
 	if chao_stats_panel:
 		chao_stats_panel.visible = false
+		chao_stats_panel.position = get_viewport_rect().size / 2 - chao_stats_panel.size / 2
 	
 	ChaoManager.spawn_chao_in_hub(self)
 	_update_inventory_display()
@@ -38,6 +39,27 @@ func _ready():
 		inventory_items.item_selected.connect(Callable(self, "_on_inventory_item_selected"))
 	if stats_tab_container and not stats_tab_container.is_connected("tab_changed", Callable(self, "_on_tab_changed")):
 		stats_tab_container.tab_changed.connect(Callable(self, "_on_tab_changed"))
+
+func _exit_tree():
+	if has_node("/root/Global"):
+		capture_chao_from_hub()
+
+func capture_chao_from_hub():
+	var chao_nodes = get_node_or_null("ChaoContainer").get_children()
+	var chao_list_data = []
+	for chao in chao_nodes:
+		if chao.has_method("serialize"):
+			chao_list_data.append(chao.serialize())
+
+	# CORRECTED: Read from the live Global variables, not the stale player_data dict
+	var full_save_data = {
+		"rings": Global.rings,
+		"inventory": Global.inventory,
+		"chao_list": chao_list_data
+	}
+	
+	print("CLIENT: Saving data to server...")
+	Server.save_data_to_server(full_save_data)
 
 func _on_tab_changed(tab_index: int):
 	if stats_tab_container and tab_index >= 0 and tab_index < stats_tab_container.get_tab_count():
@@ -63,7 +85,7 @@ func _unhandled_input(event):
 			if _has_selected_item() and _is_position_in_spawn_area(mouse_pos):
 				_place_ball_at_position(mouse_pos, direction)
 				Global.inventory["ball"] -= 1
-				Global.reset_selected()
+				Global.selected_item = "" # Reset selected item
 				_update_inventory_display()
 				get_viewport().set_input_as_handled()
 
@@ -81,7 +103,7 @@ func _place_selected_item(pos: Vector2):
 		_: return
 	if instance:
 		Global.inventory[item] -= 1
-		Global.reset_selected()
+		Global.selected_item = "" # Reset selected item
 		_update_inventory_display()
 
 func _place_egg_at_position(pos: Vector2):
@@ -206,24 +228,17 @@ func _update_chao_stats_display():
 					else:
 						label.text = "%s: %.1f" % [stat_name.capitalize(), stat_value]
 
-# The function now gets the old name from the node's metadata
-# Corrected _on_chao_name_changed function
 func _on_chao_name_changed(new_name: String):
-	# Get the currently active tab (VBoxContainer) from the TabContainer
 	var current_tab = stats_tab_container.get_current_tab_control()
-	if not current_tab:
-		return
+	if not current_tab: return
 
-	# Find the LineEdit node within the current tab
 	var line_edit = null
 	for child in current_tab.get_children():
 		if child is LineEdit:
 			line_edit = child
 			break
-	if not line_edit:
-		return
+	if not line_edit: return
 
-	# Retrieve the old name from the metadata
 	var old_name = line_edit.get_meta("old_chao_name", "")
 
 	if old_name != "" and new_name != old_name:
@@ -238,12 +253,10 @@ func _on_chao_name_changed(new_name: String):
 			Global.selected_chao = new_name
 			_update_chao_stats_display()
 
-			# Update the tab title
 			var tab_index = stats_tab_container.get_tab_idx_from_control(current_tab)
 			if tab_index != -1:
 				stats_tab_container.set_tab_title(tab_index, new_name)
 	
-	# After renaming, update the metadata for future renames
 	if line_edit:
 		line_edit.set_meta("old_chao_name", new_name)
 
@@ -257,10 +270,6 @@ func _on_chao_selected(chao_name: String):
 			break
 	if ChatManager: ChatManager.add_chat_message("Selected Chao %s" % chao_name)
 	_update_chao_stats_display()
-
-func _exit_tree():
-	if has_node("/root/Global"):
-		ChaoManager.capture_chao_from_hub(self)
 
 func _on_store_button_pressed():
 	get_tree().change_scene_to_file("res://store.tscn")

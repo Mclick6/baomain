@@ -1,19 +1,13 @@
-# server/DatabaseManager.gd
 extends Node
 
 var db_connection = SQLite.new()
 
 func _ready():
-	# This path is relative to the executable.
-	# The file will be created if it doesn't exist.
 	db_connection.path = "res://chao_haven.db"
-	
-	# Open the database file.
 	if not db_connection.open_db():
 		print("DATABASE ERROR: Could not open SQLite database.")
 		get_tree().quit()
 		return
-	
 	print("SQLite database opened successfully.")
 	_create_tables()
 
@@ -38,51 +32,85 @@ func register_account(username: String, password: String) -> Dictionary:
 		if not result.is_empty():
 			return {"success": false, "reason": "Username is already taken."}
 
-	# If we reach here, the username is available.
 	var password_hash = _hash_password(password)
 	var insert_query = "INSERT INTO accounts (username, password_hash, created_at) VALUES (?, ?, datetime('now'));"
 	if db_connection.query_with_bindings(insert_query, [username, password_hash]):
 		var get_id_query = "SELECT id FROM accounts WHERE username = ?;"
 		if db_connection.query_with_bindings(get_id_query, [username]):
 			var new_account_id = db_connection.query_result[0]["id"]
-			
 			var default_inventory = {"egg": 1, "nut": 5, "ball": 0}
 			var player_data_query = "INSERT INTO player_data (account_id, rings, inventory) VALUES (?, ?, ?);"
 			db_connection.query_with_bindings(player_data_query, [new_account_id, 100, JSON.stringify(default_inventory)])
-			
 			return {"success": true, "reason": "Registration successful."}
 	
-	# If any query failed, return an error.
 	return {"success": false, "reason": "A database error occurred."}
 
 func login(username: String, password: String) -> Dictionary:
 	var query = "SELECT id, password_hash FROM accounts WHERE username = ?;"
 	if db_connection.query_with_bindings(query, [username]):
 		var result = db_connection.query_result
-		if result.is_empty():
-			print("Login failed: User '%s' not found." % username)
-			return {}
-
+		if result.is_empty(): return {}
 		var account_id = result[0]["id"]
-		var stored_hash = result[0]["password_hash"]
+		if result[0]["password_hash"] != _hash_password(password): return {}
 
-		if stored_hash != _hash_password(password):
-			print("Login failed: Incorrect password for user '%s'." % username)
-			return {}
-
-		return load_player_data(account_id)
+		var player_data = load_player_data(account_id)
+		player_data["account_id"] = account_id
+		player_data["chao_data"] = load_chao_data(account_id)
+		return player_data
 	
-	return {} # Query failed
+	return {}
 
 func load_player_data(account_id: int) -> Dictionary:
 	var query = "SELECT rings, inventory FROM player_data WHERE account_id = ?;"
 	if db_connection.query_with_bindings(query, [account_id]):
 		var result = db_connection.query_result
-		if result.is_empty():
-			return {}
-
+		if result.is_empty(): return {}
 		var player_data = result[0]
 		player_data["inventory"] = JSON.parse_string(player_data["inventory"])
 		return player_data
+	return {}
+
+func load_chao_data(account_id: int) -> Array:
+	var chao_list = []
+	var get_player_id_query = "SELECT id FROM player_data WHERE account_id = ?;"
+	if db_connection.query_with_bindings(get_player_id_query, [account_id]):
+		var result = db_connection.query_result
+		if result.is_empty(): return []
+		var player_id = result[0]["id"]
 		
-	return {} # Query failed
+		var chao_query = "SELECT chao_name, stats FROM chao WHERE player_id = ?;"
+		if db_connection.query_with_bindings(chao_query, [player_id]):
+			for chao_row in db_connection.query_result:
+				var chao_data = chao_row
+				chao_data["stats"] = JSON.parse_string(chao_data["stats"])
+				chao_list.append(chao_data)
+	return chao_list
+
+func save_player_data(account_id: int, data: Dictionary):
+	var rings = data.get("rings", 0)
+	var inventory = data.get("inventory", {})
+	var chao_list = data.get("chao_list", [])
+
+	var player_update_query = "UPDATE player_data SET rings = ?, inventory = ? WHERE account_id = ?;"
+	db_connection.query_with_bindings(player_update_query, [rings, JSON.stringify(inventory), account_id])
+
+	var get_player_id_query = "SELECT id FROM player_data WHERE account_id = ?;"
+	if db_connection.query_with_bindings(get_player_id_query, [account_id]):
+		var result = db_connection.query_result
+		if result.is_empty():
+			print("DATABASE ERROR: Could not find player to save chao for.")
+			return
+		
+		# CORRECTED: All Chao logic is now correctly indented inside this 'if' block
+		var player_id = result[0]["id"]
+		
+		var delete_chao_query = "DELETE FROM chao WHERE player_id = ?;"
+		db_connection.query_with_bindings(delete_chao_query, [player_id])
+		
+		for chao_data in chao_list:
+			var chao_insert_query = "INSERT INTO chao (player_id, chao_name, stats) VALUES (?, ?, ?);"
+			var chao_name = chao_data.get("chao_name", "New Chao")
+			var chao_stats = chao_data.get("stats", {})
+			db_connection.query_with_bindings(chao_insert_query, [player_id, chao_name, JSON.stringify(chao_stats)])
+	
+	print("Saved data for account_id: %d" % account_id)

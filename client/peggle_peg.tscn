@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5rl66e82vno2"]
+
+[ext_resource type="Script" uid="uid://bax8acaknktgd" path="res://peggle_peg.gd" id="1_vpmii"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_utibk"]
+radius = 15.0
+
+[node name="PegglePeg" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 3
+script = ExtResource("1_vpmii")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_utibk")

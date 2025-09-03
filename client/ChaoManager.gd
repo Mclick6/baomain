@@ -3,23 +3,57 @@ extends Node
 
 var chao_list: Array = []
 var chao_counter: int = 0
-var autosave_timer: Timer
 
-func _ready():
-	# The client should NOT load a file on startup. It waits for the server.
+# --- DATA MANAGEMENT ---
+func get_chao_data(chao_name: String) -> Dictionary:
+	for chao in chao_list:
+		if chao.get("chao_name") == chao_name:
+			return chao
+	return {}
+
+func update_chao_stat(chao_name: String, stat: String, value):
+	var chao_data = get_chao_data(chao_name)
+	if chao_data.is_empty(): return
 	
-	autosave_timer = Timer.new()
-	autosave_timer.wait_time = 30.0
-	autosave_timer.autostart = true
-	# We also disconnect local saving, as the server will handle it.
-	# autosave_timer.timeout.connect(save_to_file) 
-	add_child(autosave_timer)
+	if chao_data["stats"].has(stat):
+		if chao_data["stats"][stat] is Dictionary:
+			chao_data["stats"][stat]["progress"] += value
+		else:
+			chao_data["stats"][stat] = clamp(chao_data["stats"][stat] + value, 0.0, 100.0)
 
-func _notification(what):
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		# The client should just quit without trying to save locally.
-		get_tree().quit()
+func create_and_add_new_chao(pos: Vector2) -> Dictionary:
+	chao_counter += 1
+	var new_chao = {
+		"chao_name": "Chao %d" % chao_counter,
+		"position": {"x": pos.x, "y": pos.y},
+		"stats": {
+			"swim": {"level": 0, "progress": 0.0}, "fly": {"level": 0, "progress": 0.0},
+			"run": {"level": 0, "progress": 0.0}, "power": {"level": 0, "progress": 0.0},
+			"stamina": {"level": 0, "progress": 0.0}, "belly": 100.0, "mood": 100.0
+		}
+	}
+	chao_list.append(new_chao)
+	return new_chao
 
-# --- (Paste the rest of your original ChaoManager functions below) ---
-# For example: create_and_add_new_chao, rename_chao, get_chao_data, etc.
-# Just make sure the _ready function is the one from above.
+# ADDED THIS FUNCTION
+func rename_chao(old_name: String, new_name: String):
+	var chao_data = get_chao_data(old_name)
+	if not chao_data.is_empty():
+		chao_data["chao_name"] = new_name
+		print("ChaoManager: Renamed '%s' to '%s'" % [old_name, new_name])
+
+# --- SCENE MANAGEMENT ---
+func spawn_chao_in_hub(hub_node):
+	var chao_scene = preload("res://chao.tscn")
+	if not chao_scene: return
+	
+	var chao_container = hub_node.get_node_or_null("ChaoContainer")
+	if not chao_container: return
+		
+	for chao_data in chao_list:
+		var chao = chao_scene.instantiate()
+		chao.deserialize(chao_data)
+		chao_container.add_child(chao)
+
+func capture_chao_from_hub(hub_node):
+	pass

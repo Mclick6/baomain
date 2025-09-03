@@ -1,7 +1,6 @@
 # global/NetworkClient.gd
 extends Node
 
-# Custom signals for the UI to connect to.
 signal connected_to_server
 signal connection_failed
 signal login_success(player_data)
@@ -13,13 +12,9 @@ signal chat_message_received(message)
 const SERVER_IP = "127.0.0.1"
 const DEFAULT_PORT = 7777
 
-# The peer object, stored as a member variable to prevent it from being
-# garbage collected, which would close the connection.
 var peer = ENetMultiplayerPeer.new()
 
 func _ready():
-	# Connect to Godot's built-in multiplayer signals.
-	# When they fire, we emit our own custom signals for the UI.
 	multiplayer.connected_to_server.connect(func():
 		print("CLIENT: Built-in 'connected_to_server' signal received! Emitting custom signal.")
 		connected_to_server.emit()
@@ -33,53 +28,44 @@ func connect_to_server():
 	peer.create_client(SERVER_IP, DEFAULT_PORT)
 	multiplayer.multiplayer_peer = peer
 
-# --- Functions Called by the Client UI to Send Requests to the Server ---
-
+# --- Functions Called by the Client UI to Send Requests ---
 func request_login(username, password):
 	rpc("_request_login", username, password)
-
 func request_registration(username, password):
 	rpc("_request_registration", username, password)
-
 func send_chat_message(message_text):
 	rpc("_request_chat_message", message_text)
+func save_data_to_server(data: Dictionary):
+	rpc("_request_save_data", data)
 
-# --- Server-Side RPC Stubs (Required for Local Validation) ---
-# These functions are empty on the client. Their only purpose is to have the
-# @rpc annotation so that Godot's safety check passes before it sends the
-# request to the server, where the real logic exists.
-
+# --- Server-Side RPC Stubs (for checksum matching) ---
 @rpc("call_remote", "reliable")
-func _request_login(_username, _password):
-	pass
-
+func _request_login(_username, _password): pass
 @rpc("call_remote", "reliable")
-func _request_registration(_username, _password):
-	pass
-
+func _request_registration(_username, _password): pass
 @rpc("call_remote", "reliable")
-func _request_chat_message(_message_text):
-	pass
+func _request_chat_message(_message_text): pass
+@rpc("call_remote", "reliable")
+func _request_save_data(_player_data: Dictionary): pass
+@rpc("call_remote")
+func _pong(): pass
 
 # --- Functions Called BY the Server ON This Client ---
-# These functions receive responses from the server and emit signals.
-
 @rpc("call_local", "reliable")
 func _rpc_login_success(player_data):
 	login_success.emit(player_data)
-
 @rpc("call_local", "reliable")
 func _rpc_login_failure(reason):
 	login_failure.emit(reason)
-
 @rpc("call_local", "reliable")
 func _rpc_registration_success():
 	registration_success.emit()
-
 @rpc("call_local", "reliable")
 func _rpc_registration_failure(reason):
 	registration_failure.emit(reason)
-
 @rpc("call_local", "reliable")
 func _rpc_receive_chat_message(message):
 	chat_message_received.emit(message)
+@rpc("call_local", "reliable")
+func _ping():
+	rpc("_pong")
