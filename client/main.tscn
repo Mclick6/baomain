@@ -11,4 +11,3 @@ script = ExtResource("1_a73wq")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="LoginScreen" parent="UI" instance=ExtResource("2_b4cde")]
-script = null

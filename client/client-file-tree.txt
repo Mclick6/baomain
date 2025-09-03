@@ -1,0 +1,664 @@
+C:\Users\Rob\Documents\minimal_server\client>tree /f
+Folder PATH listing
+Volume serial number is 0E62-4022
+C:.
+│   .gitattributes
+│   .gitignore
+│   chao.gd
+│   chao.gd.uid
+│   chao.tscn
+│   ChaoManager.gd
+│   ChaoManager.gd.uid
+│   ChatManager.gd
+│   ChatManager.gd.uid
+│   egg.gd
+│   egg.gd.uid
+│   egg.tscn
+│   filetree-minimum.txt
+│   garden.gd
+│   garden.gd.uid
+│   garden.tscn
+│   Global.gd
+│   Global.gd.uid
+│   icon.svg
+│   icon.svg.import
+│   login.gd
+│   login.gd.uid
+│   login.tscn
+│   main.gd
+│   main.gd.uid
+│   main.tscn
+│   NetworkClient.gd
+│   NetworkClient.gd.uid
+│   nut.gd
+│   nut.gd.uid
+│   nut.tscn
+│   project.godot
+│   school.gd
+│   school.gd.uid
+│   school.png
+│   school.png.import
+│   school.tscn
+│   test.gd
+│   test.gd.uid
+│   test.tscn
+│   toy_ball.gd
+│   toy_ball.gd.uid
+│   toy_ball.tscn
+│   treadmill.gd
+│   treadmill.gd.uid
+│   treadmill.tscn
+│   Utils.gd
+│   Utils.gd.uid
+│
+├───.godot
+│   │   .gdignore
+│   │   global_script_class_cache.cfg
+│   │   scene_groups_cache.cfg
+│   │   uid_cache.bin
+│   │
+│   ├───editor
+│   │       chao.gd-folding-8b31975c4a275a0524cb85ef4b42930c.cfg
+│   │       chao.tscn-editstate-91de50ac345731d557e4395756bd0402.cfg
+│   │       chao.tscn-folding-91de50ac345731d557e4395756bd0402.cfg
+│   │       ChaoManager.gd-folding-4896714fbb001494548f378002587536.cfg
+│   │       client.gd-folding-56098072ff1828cd276adab07b75d0e5.cfg
+│   │       client.tscn-editstate-28d74bcfaeb4b0ca75c8bfcbf615d89f.cfg
+│   │       client.tscn-folding-28d74bcfaeb4b0ca75c8bfcbf615d89f.cfg
+│   │       create_recent.Node
+│   │       default_bus_layout.tres-folding-19246414aa9fb561ced4b8dce477acec.cfg
+│   │       editor_layout.cfg
+│   │       egg.tscn-editstate-3eea939e9f728804b9fd2edbd0e2bd16.cfg
+│   │       egg.tscn-folding-3eea939e9f728804b9fd2edbd0e2bd16.cfg
+│   │       favorites.Node
+│   │       filesystem_cache10
+│   │       filesystem_cache8
+│   │       filesystem_update4
+│   │       garden.tscn-editstate-0f3c5aeeb55603c402d21ead9793560e.cfg
+│   │       garden.tscn-folding-0f3c5aeeb55603c402d21ead9793560e.cfg
+│   │       Global.gd-folding-31fb0696573fb96209db19fc456fa721.cfg
+│   │       login.gd-folding-ba88de43374ba7364f397bf9c0e5e7dc.cfg
+│   │       login.tscn-editstate-7aeadb58d35a3c0bfb71a821ef748161.cfg
+│   │       login.tscn-folding-7aeadb58d35a3c0bfb71a821ef748161.cfg
+│   │       main.gd-folding-daa4015e0f545c0a8834ef10f8cd9b2e.cfg
+│   │       main.tscn-editstate-3070c538c03ee49b7677ff960a3f5195.cfg
+│   │       main.tscn-folding-3070c538c03ee49b7677ff960a3f5195.cfg
+│   │       memory_match.tscn-folding-41fb88df000796c4f31acde29e08359d.cfg
+│   │       minigamelobby.mp3-ad7f0e4ce18aa5a52899963fd1daf861.mp3str-folding-ce1503bb0fe0b5c2219d6d4f8467547f.cfg
+│   │       minigames.tscn-folding-53c38894065f60d56622edce30815b9f.cfg
+│   │       NetworkClient.gd-folding-0adea37ea3d87b06421979c71a3340d0.cfg
+│   │       nut.tscn-editstate-0d76e3b90dd706ffdfe95c787fc629db.cfg
+│   │       nut.tscn-folding-0d76e3b90dd706ffdfe95c787fc629db.cfg
+│   │       parallax_background.tscn-folding-cc48c384f7d832504eca78e063a40f51.cfg
+│   │       peggle_ball.tscn-folding-09d7e614d7870ea96408f58b1405910e.cfg
+│   │       peggle_game.tscn-folding-8fb796953d44ad9e62c210a86200e2ee.cfg
+│   │       peggle_peg.tscn-folding-f9226f2ba45d4edf69e1cd81bb730a23.cfg
+│   │       project_metadata.cfg
+│   │       recent_dirs
+│   │       school.tscn-editstate-b9672a14da77e73a0c6ef481fca789b9.cfg
+│   │       school.tscn-folding-b9672a14da77e73a0c6ef481fca789b9.cfg
+│   │       script_editor_cache.cfg
+│   │       store.tscn-folding-0747c97509976700863701003bcc8ffb.cfg
+│   │       test.gd-folding-7b0f1534aa4797104c4a1c2246d0373c.cfg
+│   │       test.tscn-editstate-f0a4ea32b72b64218d23e48a955cbc61.cfg
+│   │       test.tscn-folding-f0a4ea32b72b64218d23e48a955cbc61.cfg
+│   │       toy_ball.tscn-editstate-b5335e3e41a9fe82ea7ed94a3ee20fa6.cfg
+│   │       toy_ball.tscn-folding-b5335e3e41a9fe82ea7ed94a3ee20fa6.cfg
+│   │       treadmill.tscn-editstate-56d42ac71acc6515c788201f2d797288.cfg
+│   │       treadmill.tscn-folding-56d42ac71acc6515c788201f2d797288.cfg
+│   │
+│   ├───imported
+│   │       18245.png-b0a4a60d389e08d1a7e3ff40513fe660.ctex
+│   │       18245.png-b0a4a60d389e08d1a7e3ff40513fe660.md5
+│   │       220034.png-67fd68ebc5e63d2dc3661263d56a9584.ctex
+│   │       220034.png-67fd68ebc5e63d2dc3661263d56a9584.md5
+│   │       220037.png-ec3aa1fcbd4145d752095d5ca834893a.ctex
+│   │       220037.png-ec3aa1fcbd4145d752095d5ca834893a.md5
+│   │       220041.png-ccc7884192904888a4a74dd7e65a6833.ctex
+│   │       220041.png-ccc7884192904888a4a74dd7e65a6833.md5
+│   │       220247.png-16ee2387dad91cee93b506b89d69f28a.ctex
+│   │       220247.png-16ee2387dad91cee93b506b89d69f28a.md5
+│   │       267005.png-fd2dfda7ce1354dc6bb0cd88d97e2812.ctex
+│   │       267005.png-fd2dfda7ce1354dc6bb0cd88d97e2812.md5
+│   │       apple.png-a0fb18dd963593daec5817304e8bb693.ctex
+│   │       apple.png-a0fb18dd963593daec5817304e8bb693.md5
+│   │       background (1).png-29724f2ea54551dc956d6b305d498ab9.ctex
+│   │       background (1).png-29724f2ea54551dc956d6b305d498ab9.md5
+│   │       background (2).png-7c1146a8a559c657d1edccac876df585.ctex
+│   │       background (2).png-7c1146a8a559c657d1edccac876df585.md5
+│   │       background (3).png-932e26c980982ca0ecd397f5c075e376.ctex
+│   │       background (3).png-932e26c980982ca0ecd397f5c075e376.md5
+│   │       background.webp-f6d775bce43ef5770297f204b7216622.ctex
+│   │       background.webp-f6d775bce43ef5770297f204b7216622.md5
+│   │       ball.png-9a4ca347acb7532f6ae347744a6b04f7.ctex
+│   │       ball.png-9a4ca347acb7532f6ae347744a6b04f7.md5
+│   │       banana.png-36ab9ff8824f5bb92327d4deb7804fec.ctex
+│   │       banana.png-36ab9ff8824f5bb92327d4deb7804fec.md5
+│   │       blue_peg.png-99beaacb6b91a631f5f9ae3a4a6da3ed.ctex
+│   │       blue_peg.png-99beaacb6b91a631f5f9ae3a4a6da3ed.md5
+│   │       bush_1.webp-2c941d4905fffb7aac8b9a4f0795f477.ctex
+│   │       bush_1.webp-2c941d4905fffb7aac8b9a4f0795f477.md5
+│   │       campfire.png-15590a5e53d0af31216b6bb57a8f5ce7.ctex
+│   │       campfire.png-15590a5e53d0af31216b6bb57a8f5ce7.md5
+│   │       campfire_crackle.mp3-b8154756434cc6ec064e125f78d6ee86.md5
+│   │       cannon.png-eac2476ae101f2aec59051cb7c47136f.ctex
+│   │       cannon.png-eac2476ae101f2aec59051cb7c47136f.md5
+│   │       chao-adventure-2-sprite-sheet.png-5cd204c7cc26f9f3b77f6c38553129d1.ctex
+│   │       chao-adventure-2-sprite-sheet.png-5cd204c7cc26f9f3b77f6c38553129d1.md5
+│   │       chao-anim.png-6ae504717fe130ac03b4711d56a176fd.ctex
+│   │       chao-anim.png-6ae504717fe130ac03b4711d56a176fd.md5
+│   │       chao-main.png-dc9d0e83f4ae808ccfb0451ab775f409.ctex
+│   │       chao-main.png-dc9d0e83f4ae808ccfb0451ab775f409.md5
+│   │       chao_down.png-92c6e244332f7aed9776d8b53f175077.ctex
+│   │       chao_down.png-92c6e244332f7aed9776d8b53f175077.md5
+│   │       chao_happy.png-6f1a647a327f8369f4462b6c45432a04.ctex
+│   │       chao_happy.png-6f1a647a327f8369f4462b6c45432a04.md5
+│   │       chao_idle.png-91c0dfc61bf55bb10b8382c1c12d18f3.ctex
+│   │       chao_idle.png-91c0dfc61bf55bb10b8382c1c12d18f3.md5
+│   │       chao_left.png-55cac311ff2e82cd1d99c953f71b0851.ctex
+│   │       chao_left.png-55cac311ff2e82cd1d99c953f71b0851.md5
+│   │       chao_right.png-eb22d6694ec9fbad003491724b24332b.ctex
+│   │       chao_right.png-eb22d6694ec9fbad003491724b24332b.md5
+│   │       chao_run.png-acc59958d7def9a8bf2e0b71d6eb5657.ctex
+│   │       chao_run.png-acc59958d7def9a8bf2e0b71d6eb5657.md5
+│   │       chao_sad.png-f36c78bebac605ba21c535cb7dc55dcc.ctex
+│   │       chao_sad.png-f36c78bebac605ba21c535cb7dc55dcc.md5
+│   │       chao_up.png-ab4a5343f97f326db2fd9b3662fab9ee.ctex
+│   │       chao_up.png-ab4a5343f97f326db2fd9b3662fab9ee.md5
+│   │       clouds_1.webp-055f9d9e06108186e13701c1533b8b25.ctex
+│   │       clouds_1.webp-055f9d9e06108186e13701c1533b8b25.md5
+│   │       cloud_1.webp-c65f6a46c6e6e73306ba4ed0326c749e.ctex
+│   │       cloud_1.webp-c65f6a46c6e6e73306ba4ed0326c749e.md5
+│   │       cloud_2.webp-32c8608178e58b5f5de05f3d51d6cca6.ctex
+│   │       cloud_2.webp-32c8608178e58b5f5de05f3d51d6cca6.md5
+│   │       cloud_3.webp-b6b85fc4dad9fe6169463a7352ceaa46.ctex
+│   │       cloud_3.webp-b6b85fc4dad9fe6169463a7352ceaa46.md5
+│   │       combat_bg_ancient.png-88ce77df34ea32b8f9f7831d0f0e7dc8.ctex
+│   │       combat_bg_ancient.png-88ce77df34ea32b8f9f7831d0f0e7dc8.md5
+│   │       combat_bg_blood.png-07e9cbb794b23a30e0a97f2bf1391f2b.ctex
+│   │       combat_bg_blood.png-07e9cbb794b23a30e0a97f2bf1391f2b.md5
+│   │       combat_bg_dragon.png-bbd164f30bd1c8cab45ffcddb36060a2.ctex
+│   │       combat_bg_dragon.png-bbd164f30bd1c8cab45ffcddb36060a2.md5
+│   │       combat_bg_dungeon.png-aaf9fb72d92e75b2bb98749d143dfe24.ctex
+│   │       combat_bg_dungeon.png-aaf9fb72d92e75b2bb98749d143dfe24.md5
+│   │       combat_bg_field.png-4df71093116f39aa587d6a8f6d87ece9.ctex
+│   │       combat_bg_field.png-4df71093116f39aa587d6a8f6d87ece9.md5
+│   │       combat_bg_flower.png-00f19fd26d4888226cab0064c7eaac40.ctex
+│   │       combat_bg_flower.png-00f19fd26d4888226cab0064c7eaac40.md5
+│   │       combat_bg_forest.png-9cfff339fb93b8a35e66828a77a7d5ed.ctex
+│   │       combat_bg_forest.png-9cfff339fb93b8a35e66828a77a7d5ed.md5
+│   │       combat_bg_forest_fall.png-fcc3afe79834c4b2684dd2de7d9ad7d1.ctex
+│   │       combat_bg_forest_fall.png-fcc3afe79834c4b2684dd2de7d9ad7d1.md5
+│   │       combat_bg_grass.png-527281492fae7404a65ffd45b79e0e7c.ctex
+│   │       combat_bg_grass.png-527281492fae7404a65ffd45b79e0e7c.md5
+│   │       combat_bg_mountain.png-5b96e4324d4c74dd1f87b556ebdc3920.ctex
+│   │       combat_bg_mountain.png-5b96e4324d4c74dd1f87b556ebdc3920.md5
+│   │       combat_bg_road.png-53b5cf3457ddc57cf8505113ccd4cf2e.ctex
+│   │       combat_bg_road.png-53b5cf3457ddc57cf8505113ccd4cf2e.md5
+│   │       Custom _ Edited - Sonic the Hedgehog Customs - Chao - Chao.png-43af2d4439fe4eb6ffb503f30f3abaa9.ctex
+│   │       Custom _ Edited - Sonic the Hedgehog Customs - Chao - Chao.png-43af2d4439fe4eb6ffb503f30f3abaa9.md5
+│   │       distant_platforms_1.webp-dd0c47297581991d9270b74920caa0de.ctex
+│   │       distant_platforms_1.webp-dd0c47297581991d9270b74920caa0de.md5
+│   │       distant_platforms_2.webp-c94d775a28abafa5c8dffb39f952d140.ctex
+│   │       distant_platforms_2.webp-c94d775a28abafa5c8dffb39f952d140.md5
+│   │       egg.png-67428b4f3495eb043dd038e02bc8fdec.ctex
+│   │       egg.png-67428b4f3495eb043dd038e02bc8fdec.md5
+│   │       fern_1.webp-6432deec8f4738ae772ee4830c3e28c1.ctex
+│   │       fern_1.webp-6432deec8f4738ae772ee4830c3e28c1.md5
+│   │       flower_1.webp-84ba29d4e2ecc60b0572e1c5d894fe0d.ctex
+│   │       flower_1.webp-84ba29d4e2ecc60b0572e1c5d894fe0d.md5
+│   │       fruit.png-b8f347e2f3367f3b0ac65aae62768029.ctex
+│   │       fruit.png-b8f347e2f3367f3b0ac65aae62768029.md5
+│   │       grass_1.webp-1b5cfbc212a9ab5d9a705dce57a0e8a2.ctex
+│   │       grass_1.webp-1b5cfbc212a9ab5d9a705dce57a0e8a2.md5
+│   │       grass_2.webp-0428af689a89f0d5f399b3adac76e01e.ctex
+│   │       grass_2.webp-0428af689a89f0d5f399b3adac76e01e.md5
+│   │       grass_3.webp-ed068a7b9ddb78a9d7877cb89604c0fd.ctex
+│   │       grass_3.webp-ed068a7b9ddb78a9d7877cb89604c0fd.md5
+│   │       ground_flowers_1.webp-708b8de83edb7e5a8a4e4107d5ce362b.ctex
+│   │       ground_flowers_1.webp-708b8de83edb7e5a8a4e4107d5ce362b.md5
+│   │       HH_bouncing_ball_0000.png-0e9f0157c28df5088ddd3ae4b2ab310e.ctex
+│   │       HH_bouncing_ball_0000.png-0e9f0157c28df5088ddd3ae4b2ab310e.md5
+│   │       HH_bouncing_ball_0000.png-6725871833c6137ce16a19ec534f93ab.ctex
+│   │       HH_bouncing_ball_0000.png-6725871833c6137ce16a19ec534f93ab.md5
+│   │       HH_bouncing_ball_0000.png-b19d07feab4b59513a00d86235a3e77c.ctex
+│   │       HH_bouncing_ball_0000.png-b19d07feab4b59513a00d86235a3e77c.md5
+│   │       HH_bouncing_ball_0001.png-aa8c7fa41341b897ffded5ae144c7812.ctex
+│   │       HH_bouncing_ball_0001.png-aa8c7fa41341b897ffded5ae144c7812.md5
+│   │       HH_bouncing_ball_0001.png-e5ec9fb5bae2e1362dbee01a84fc2a46.ctex
+│   │       HH_bouncing_ball_0001.png-e5ec9fb5bae2e1362dbee01a84fc2a46.md5
+│   │       HH_bouncing_ball_0002.png-2a44a652067ea42fb1f2d1f9601c91d1.ctex
+│   │       HH_bouncing_ball_0002.png-2a44a652067ea42fb1f2d1f9601c91d1.md5
+│   │       HH_bouncing_ball_0002.png-d137d32ba53ec3ef361fd272ff988d60.ctex
+│   │       HH_bouncing_ball_0002.png-d137d32ba53ec3ef361fd272ff988d60.md5
+│   │       HH_bouncing_ball_0003.png-83155497bff9b13002c6a22db473f007.ctex
+│   │       HH_bouncing_ball_0003.png-83155497bff9b13002c6a22db473f007.md5
+│   │       HH_bouncing_ball_0003.png-fdb061e1197fff0e88147ce1441a852e.ctex
+│   │       HH_bouncing_ball_0003.png-fdb061e1197fff0e88147ce1441a852e.md5
+│   │       HH_bouncing_ball_0004.png-3ace0a2ff56d1fa3674f11808db81202.ctex
+│   │       HH_bouncing_ball_0004.png-3ace0a2ff56d1fa3674f11808db81202.md5
+│   │       HH_bouncing_ball_0004.png-6a0742545bfe754d893f12410cc32830.ctex
+│   │       HH_bouncing_ball_0004.png-6a0742545bfe754d893f12410cc32830.md5
+│   │       HH_bouncing_ball_0005.png-12e3ddfff4a95cfe959bda21bd33ca45.ctex
+│   │       HH_bouncing_ball_0005.png-12e3ddfff4a95cfe959bda21bd33ca45.md5
+│   │       HH_bouncing_ball_0005.png-212f9bd26bc588734db865eb08845f2d.ctex
+│   │       HH_bouncing_ball_0005.png-212f9bd26bc588734db865eb08845f2d.md5
+│   │       HH_bouncing_ball_0006.png-803fea5fb3ca1d7482aa783f812f2fb6.ctex
+│   │       HH_bouncing_ball_0006.png-803fea5fb3ca1d7482aa783f812f2fb6.md5
+│   │       HH_bouncing_ball_0006.png-c9eb79e7347bd9d967557dc9f4012c3f.ctex
+│   │       HH_bouncing_ball_0006.png-c9eb79e7347bd9d967557dc9f4012c3f.md5
+│   │       HH_bouncing_ball_0007.png-06963a34c09390a6020a402586a425c2.ctex
+│   │       HH_bouncing_ball_0007.png-06963a34c09390a6020a402586a425c2.md5
+│   │       HH_bouncing_ball_0007.png-9f277db2d622cbd341a910b267575c1a.ctex
+│   │       HH_bouncing_ball_0007.png-9f277db2d622cbd341a910b267575c1a.md5
+│   │       HH_bouncing_ball_0008.png-8ebe59c7e90c098b2e912834fa604ff1.ctex
+│   │       HH_bouncing_ball_0008.png-8ebe59c7e90c098b2e912834fa604ff1.md5
+│   │       HH_bouncing_ball_0008.png-e5e043898ed75d2855c3943e3306cc1d.ctex
+│   │       HH_bouncing_ball_0008.png-e5e043898ed75d2855c3943e3306cc1d.md5
+│   │       icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex
+│   │       icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5
+│   │       indoor.png-8aa767d40dfd9b27f230f4dff78cec34.ctex
+│   │       indoor.png-8aa767d40dfd9b27f230f4dff78cec34.md5
+│   │       I_C_Carrot.png-cbe3958eaf10163b8e33f475cc4fc986.ctex
+│   │       I_C_Carrot.png-cbe3958eaf10163b8e33f475cc4fc986.md5
+│   │       minigamelobby.mp3-ad7f0e4ce18aa5a52899963fd1daf861.md5
+│   │       minigamelobby.mp3-ad7f0e4ce18aa5a52899963fd1daf861.mp3str
+│   │       mountains.png-4a48bf81e6b6e64abad2c5845ad446d4.ctex
+│   │       mountains.png-4a48bf81e6b6e64abad2c5845ad446d4.md5
+│   │       nurse.png-dfab6edf578ab3a2807904d6342669a1.ctex
+│   │       nurse.png-dfab6edf578ab3a2807904d6342669a1.md5
+│   │       nut.png-2ad4f17158ab8c338a485a028c14b254.ctex
+│   │       nut.png-2ad4f17158ab8c338a485a028c14b254.md5
+│   │       obj_char_idleS_001_1.png-856e70038aea29406ecffd797f5f7218.ctex
+│   │       obj_char_idleS_001_1.png-856e70038aea29406ecffd797f5f7218.md5
+│   │       Ocean_SpriteSheet.png-e110b3d970c6b58933420ca85643e0f9.ctex
+│   │       Ocean_SpriteSheet.png-e110b3d970c6b58933420ca85643e0f9.md5
+│   │       orange.png-133e63922971d7b73fe89ef445c048fb.ctex
+│   │       orange.png-133e63922971d7b73fe89ef445c048fb.md5
+│   │       orange_peg.png-2adf02047003688becbf6f3b87ad5ce7.ctex
+│   │       orange_peg.png-2adf02047003688becbf6f3b87ad5ce7.md5
+│   │       parallax-forest-back-trees.png-849d689f9f528e81cac994e1f1318ee8.ctex
+│   │       parallax-forest-back-trees.png-849d689f9f528e81cac994e1f1318ee8.md5
+│   │       parallax-forest-front-trees.png-0ac148c3e603cbc488f9a7696a91e044.ctex
+│   │       parallax-forest-front-trees.png-0ac148c3e603cbc488f9a7696a91e044.md5
+│   │       parallax-forest-lights.png-08e49bd3c4f9e6168d8043eb05f39aa4.ctex
+│   │       parallax-forest-lights.png-08e49bd3c4f9e6168d8043eb05f39aa4.md5
+│   │       parallax-forest-middle-trees.png-4268fedc3f193ff368ba9f62bebe2d75.ctex
+│   │       parallax-forest-middle-trees.png-4268fedc3f193ff368ba9f62bebe2d75.md5
+│   │       parallax-mountain-bg.png-9fdeed68ad384a43740e89072e7c5699.ctex
+│   │       parallax-mountain-bg.png-9fdeed68ad384a43740e89072e7c5699.md5
+│   │       parallax-mountain-foreground-trees.png-012c2e1f3a39c5d1e6b6e3c08a149065.ctex
+│   │       parallax-mountain-foreground-trees.png-012c2e1f3a39c5d1e6b6e3c08a149065.md5
+│   │       parallax-mountain-montain-far.png-209675b42a52e18f5366f1350fda8d76.ctex
+│   │       parallax-mountain-montain-far.png-209675b42a52e18f5366f1350fda8d76.md5
+│   │       parallax-mountain-mountains.png-638f3d0cc97629237ba25ba68b39bc4d.ctex
+│   │       parallax-mountain-mountains.png-638f3d0cc97629237ba25ba68b39bc4d.md5
+│   │       parallax-mountain-trees.png-3d07f994bb2978f28ca2fafd4c1be534.ctex
+│   │       parallax-mountain-trees.png-3d07f994bb2978f28ca2fafd4c1be534.md5
+│   │       pear.png-05da10987f5c6422d03ea17a71f267f8.ctex
+│   │       pear.png-05da10987f5c6422d03ea17a71f267f8.md5
+│   │       ProjectUtumno_full.png-944fca2278d9c0e6d044c5632426d955.ctex
+│   │       ProjectUtumno_full.png-944fca2278d9c0e6d044c5632426d955.md5
+│   │       rock_1.webp-c802a1ccc33f04fcad7b9e7f864b9b7c.ctex
+│   │       rock_1.webp-c802a1ccc33f04fcad7b9e7f864b9b7c.md5
+│   │       room.png-8f631fb29405d76211b4d26ee9a8fcaf.ctex
+│   │       room.png-8f631fb29405d76211b4d26ee9a8fcaf.md5
+│   │       school-background.png-0f739cd373ea32a557b796b38ae6bace.ctex
+│   │       school-background.png-0f739cd373ea32a557b796b38ae6bace.md5
+│   │       school.png-0386b61e22122f51cbfef36011580136.ctex
+│   │       school.png-0386b61e22122f51cbfef36011580136.md5
+│   │       sky.webp-eab5274085f2398ffa09838fc9108cee.ctex
+│   │       sky.webp-eab5274085f2398ffa09838fc9108cee.md5
+│   │       snow-expansion.png-5a05c42a52bee4d48dc065670591c7bd.ctex
+│   │       snow-expansion.png-5a05c42a52bee4d48dc065670591c7bd.md5
+│   │       teacher_swim.png-00fb7d4fff222a8679e7edce4a592dc8.ctex
+│   │       teacher_swim.png-00fb7d4fff222a8679e7edce4a592dc8.md5
+│   │       tiles.png-38752fdd85644347bdbe2226562d8a9f.ctex
+│   │       tiles.png-38752fdd85644347bdbe2226562d8a9f.md5
+│   │       tileset.png-75d4875b58d2c010aa444b4542ceedf4.ctex
+│   │       tileset.png-75d4875b58d2c010aa444b4542ceedf4.md5
+│   │       tiles_packed.png-a0df14c5744357e22b576d3a52c140d3.ctex
+│   │       tiles_packed.png-a0df14c5744357e22b576d3a52c140d3.md5
+│   │       treadmill.png-f3bcfab4c77d0bf5dc5c7a0292e90c01.ctex
+│   │       treadmill.png-f3bcfab4c77d0bf5dc5c7a0292e90c01.md5
+│   │       tree_1.webp-f58e5053ffaef9e0095066ea1992f7cb.ctex
+│   │       tree_1.webp-f58e5053ffaef9e0095066ea1992f7cb.md5
+│   │       tree_2.webp-c6a111f52655a9e5158dd0dc90d26884.ctex
+│   │       tree_2.webp-c6a111f52655a9e5158dd0dc90d26884.md5
+│   │       Turtle.png-6e7ad88145da8ea2e55b2cfb9d22822a.ctex
+│   │       Turtle.png-6e7ad88145da8ea2e55b2cfb9d22822a.md5
+│   │       vine_1.webp-6dd0b81d28006107c2ef3c2b0712758c.ctex
+│   │       vine_1.webp-6dd0b81d28006107c2ef3c2b0712758c.md5
+│   │       vine_2.webp-fefcb8be103ba2c2eadfee25e1253e7a.ctex
+│   │       vine_2.webp-fefcb8be103ba2c2eadfee25e1253e7a.md5
+│   │       water.png-dd37b2436c22f5c2d8fda5eb427e7cfa.ctex
+│   │       water.png-dd37b2436c22f5c2d8fda5eb427e7cfa.md5
+│   │       water_fountain.mp3-4611e20730102023c41718db06421375.md5
+│   │       water_fountain.png-f1f0d970f7beb82273696e23c6f02665.ctex
+│   │       water_fountain.png-f1f0d970f7beb82273696e23c6f02665.md5
+│   │
+│   └───shader_cache
+│       ├───CanvasOcclusionShaderGLES3
+│       │   └───c46a4f3559bef5f1a18a113c550b6f804caee92c7d3cafa58fa463e11aae6868
+│       ├───CanvasSdfShaderGLES3
+│       │   └───dcc154c2828ff3c101efe7358223c0461f1ef1a18026e28f9bdbdeb421a1aad5
+│       ├───CanvasShaderGLES3
+│       │   ├───7001bd55cc643dfb2ec129e370dd6c8d1b73f0e61fc38385cb6888d799f13873
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───733770f2277cfa157dc9f41454dd8440524ebe0f3ea3b3aa2476adbd7a8b5305
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───CopyShaderGLES3
+│       │   └───95bbacb3b920f1e467c9fe5461623ffc165d18ac78c5723d86ae9eb59870160c
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───CubemapFilterShaderGLES3
+│       │   ├───754d702162b1aa1bf3c197275fe99d4e901ea1a2c6af25970bec3a8b0224269e
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───c550e9b0f815559de057dbc2dbf27dc0e3de32ad74af862cc9f4e35e5c22942a
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───FeedShaderGLES3
+│       │   └───0a931d22f09b176cfabdf38add57f2a01c4001817315a2b7004f548c5d3dbd98
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───GlowShaderGLES3
+│       │   └───49588f1e005abe070671f6d84e9b4e3a668ed8fe9da4284a3e82158e436a10ad
+│       ├───ParticlesCopyShaderGLES3
+│       │   ├───5f2991539f79c3850a30aeb54701bacb8352c104a531798b20b1869ceda30c60
+│       │   └───88dcbcd715f00efd6a9cbedf0370c2e2e7c1b4bc2b9e697ad0c0005393f7171b
+│       ├───ParticlesShaderGLES3
+│       │   ├───e2bd0897c3730fad10a14a23f73c23c274249303ee81745bf40485aa851ec6e5
+│       │   └───fdc66d235bca7b4f727c358dce1eee7a226c2dbafdcfb6334013ee2302e19fcc
+│       ├───PostShaderGLES3
+│       │   ├───63c5eb113abef5c002551c71a12b986825d40d2d82f64a61af5b55da8758f754
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───6433a50baef2fa1c385c1b33f07c7be826be681edcd4ce5f56e9d80d52200bc8
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───SceneShaderGLES3
+│       │   ├───48669697f261c203b28439a5ad9edaeddc660aac261fa7151365613dbce65b50
+│       │   │       0c9689a7dae2d011729a1e2cf29c71ecb4a7e8bb.cache
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │       e4803059b59d245bee29da2f87c302ecb830c09e.cache
+│       │   │
+│       │   └───a70c251965658e22c4578e90d9497dd9e708bc67cf94511f791996cdd628ff57
+│       │           0c9689a7dae2d011729a1e2cf29c71ecb4a7e8bb.cache
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │           759922d24d18f6e93947155d0345545f9941ad7c.cache
+│       │
+│       ├───SkeletonShaderGLES3
+│       │   ├───9eb6c87fe4c89997aa96ea64794f3ff86e1ea2cebde153bd346ac111248f2a51
+│       │   └───c1ed8de2d0c8866dd7c9e6d675d702468b7d03a927739e8a79d47d2b08b867f4
+│       └───SkyShaderGLES3
+│           ├───4d9ae06eb92aad45be68854a8484aca26b1c7d6d72b277ce18c36d0a27dbd03a
+│           │       851ad615ab5772632d2dd49f5447ff21ea10b2fe.cache
+│           │
+│           └───5263a3e79b147fc8011bf70c625b01e803c85ddc7b0ef779a7851d0a6034c753
+│                   851ad615ab5772632d2dd49f5447ff21ea10b2fe.cache
+│
+├───audio
+│   └───minigame
+│           campfire_crackle.mp3
+│           campfire_crackle.mp3.import
+│           minigamelobby.mp3
+│           minigamelobby.mp3.import
+│           water_fountain.mp3
+│           water_fountain.mp3.import
+│
+├───global
+│       NetworkClient.gd
+│       NetworkClient.gd.uid
+│
+├───imgs
+│   │   blue_peg.png
+│   │   blue_peg.png.import
+│   │   cannon.png
+│   │   cannon.png.import
+│   │   combat_bg_ancient.png
+│   │   combat_bg_ancient.png.import
+│   │   combat_bg_blood.png
+│   │   combat_bg_blood.png.import
+│   │   combat_bg_dragon.png
+│   │   combat_bg_dragon.png.import
+│   │   combat_bg_dungeon.png
+│   │   combat_bg_dungeon.png.import
+│   │   combat_bg_field.png
+│   │   combat_bg_field.png.import
+│   │   combat_bg_flower.png
+│   │   combat_bg_flower.png.import
+│   │   combat_bg_forest.png
+│   │   combat_bg_forest.png.import
+│   │   combat_bg_forest_fall.png
+│   │   combat_bg_forest_fall.png.import
+│   │   combat_bg_grass.png
+│   │   combat_bg_grass.png.import
+│   │   combat_bg_mountain.png
+│   │   combat_bg_mountain.png.import
+│   │   combat_bg_road.png
+│   │   combat_bg_road.png.import
+│   │   egg.png
+│   │   egg.png.import
+│   │   I_C_Carrot.png
+│   │   I_C_Carrot.png.import
+│   │   nurse.png
+│   │   nurse.png.import
+│   │   nut.png
+│   │   nut.png.import
+│   │   nut_a.png.import
+│   │   orange_peg.png
+│   │   orange_peg.png.import
+│   │   ProjectUtumno_full.png
+│   │   ProjectUtumno_full.png.import
+│   │   school-background.png
+│   │   school-background.png.import
+│   │   teacher_swim.png
+│   │   teacher_swim.png.import
+│   │
+│   ├───backgrounds
+│   │   │   background (1).png
+│   │   │   background (1).png.import
+│   │   │   background (2).png
+│   │   │   background (2).png.import
+│   │   │   background (3).png
+│   │   │   background (3).png.import
+│   │   │   indoor.png
+│   │   │   indoor.png.import
+│   │   │   Ocean_SpriteSheet.png
+│   │   │   Ocean_SpriteSheet.png.import
+│   │   │
+│   │   ├───parallax_forest_pack
+│   │   │   │   license.txt
+│   │   │   │   parallax-forest.psd
+│   │   │   │
+│   │   │   └───layers
+│   │   │           parallax-forest-back-trees.png
+│   │   │           parallax-forest-back-trees.png.import
+│   │   │           parallax-forest-front-trees.png
+│   │   │           parallax-forest-front-trees.png.import
+│   │   │           parallax-forest-lights.png
+│   │   │           parallax-forest-lights.png.import
+│   │   │           parallax-forest-middle-trees.png
+│   │   │           parallax-forest-middle-trees.png.import
+│   │   │
+│   │   └───parallax_mountain_pack
+│   │       │   license.txt
+│   │       │   parallax-mountain.psd
+│   │       │
+│   │       └───layers
+│   │               parallax-mountain-bg.png
+│   │               parallax-mountain-bg.png.import
+│   │               parallax-mountain-foreground-trees.png
+│   │               parallax-mountain-foreground-trees.png.import
+│   │               parallax-mountain-montain-far.png
+│   │               parallax-mountain-montain-far.png.import
+│   │               parallax-mountain-mountains.png
+│   │               parallax-mountain-mountains.png.import
+│   │               parallax-mountain-trees.png
+│   │               parallax-mountain-trees.png.import
+│   │
+│   ├───bouncing_ball
+│   │   │   HH_bouncing_ball_0000.png
+│   │   │   HH_bouncing_ball_0000.png.import
+│   │   │   HH_bouncing_ball_0001.png
+│   │   │   HH_bouncing_ball_0001.png.import
+│   │   │   HH_bouncing_ball_0002.png
+│   │   │   HH_bouncing_ball_0002.png.import
+│   │   │   HH_bouncing_ball_0003.png
+│   │   │   HH_bouncing_ball_0003.png.import
+│   │   │   HH_bouncing_ball_0004.png
+│   │   │   HH_bouncing_ball_0004.png.import
+│   │   │   HH_bouncing_ball_0005.png
+│   │   │   HH_bouncing_ball_0005.png.import
+│   │   │   HH_bouncing_ball_0006.png
+│   │   │   HH_bouncing_ball_0006.png.import
+│   │   │   HH_bouncing_ball_0007.png
+│   │   │   HH_bouncing_ball_0007.png.import
+│   │   │   HH_bouncing_ball_0008.png
+│   │   │   HH_bouncing_ball_0008.png.import
+│   │   │
+│   │   ├───bounce
+│   │   │       HH_bouncing_ball_0000.png
+│   │   │       HH_bouncing_ball_0000.png.import
+│   │   │       HH_bouncing_ball_0001.png
+│   │   │       HH_bouncing_ball_0001.png.import
+│   │   │       HH_bouncing_ball_0002.png
+│   │   │       HH_bouncing_ball_0002.png.import
+│   │   │       HH_bouncing_ball_0003.png
+│   │   │       HH_bouncing_ball_0003.png.import
+│   │   │       HH_bouncing_ball_0004.png
+│   │   │       HH_bouncing_ball_0004.png.import
+│   │   │       HH_bouncing_ball_0005.png
+│   │   │       HH_bouncing_ball_0005.png.import
+│   │   │       HH_bouncing_ball_0006.png
+│   │   │       HH_bouncing_ball_0006.png.import
+│   │   │       HH_bouncing_ball_0007.png
+│   │   │       HH_bouncing_ball_0007.png.import
+│   │   │       HH_bouncing_ball_0008.png
+│   │   │       HH_bouncing_ball_0008.png.import
+│   │   │
+│   │   └───hit
+│   │           HH_bouncing_ball_0000.png
+│   │           HH_bouncing_ball_0000.png.import
+│   │
+│   ├───buildings
+│   ├───items
+│   │       nut.png.import
+│   │
+│   ├───minigames
+│   │       apple.png
+│   │       apple.png.import
+│   │       banana.png
+│   │       banana.png.import
+│   │       fruit.png
+│   │       fruit.png.import
+│   │       orange.png
+│   │       orange.png.import
+│   │       pear.png
+│   │       pear.png.import
+│   │
+│   ├───sprites
+│   │       chao-happy.png.import
+│   │       chao-idle.png.import
+│   │       chao-main.png
+│   │       chao-main.png.import
+│   │       chao-run.png.import
+│   │       chao-sad.png.import
+│   │       chao_down.png
+│   │       chao_down.png.import
+│   │       chao_happy.png
+│   │       chao_happy.png.import
+│   │       chao_idle.png
+│   │       chao_idle.png.import
+│   │       chao_left.png
+│   │       chao_left.png.import
+│   │       chao_right.png
+│   │       chao_right.png.import
+│   │       chao_run.png
+│   │       chao_run.png.import
+│   │       chao_sad.png
+│   │       chao_sad.png.import
+│   │       chao_up.png
+│   │       chao_up.png.import
+│   │       treadmill.png
+│   │       treadmill.png.import
+│   │       Turtle.png
+│   │       Turtle.png.import
+│   │
+│   └───tilesets
+│       └───Tilesets
+│               mountains.png
+│               mountains.png.import
+│               snow-expansion.png
+│               snow-expansion.png.import
+│               tiles.png
+│               tiles.png.import
+│               tileset.png
+│               tileset.png.import
+│               tiles_packed.png
+│               tiles_packed.png.import
+│               water.png
+│               water.png.import
+│
+├───level
+│   ├───background
+│   │       background.old
+│   │       background.webp
+│   │       background.webp.import
+│   │       clouds_1.webp
+│   │       clouds_1.webp.import
+│   │       cloud_1.webp
+│   │       cloud_1.webp.import
+│   │       cloud_2.webp
+│   │       cloud_2.webp.import
+│   │       cloud_3.webp
+│   │       cloud_3.webp.import
+│   │       distant_platforms_1.webp
+│   │       distant_platforms_1.webp.import
+│   │       distant_platforms_2.webp
+│   │       distant_platforms_2.webp.import
+│   │       parallax_background.tscn
+│   │       sky.webp
+│   │       sky.webp.import
+│   │
+│   ├───props
+│   │       bush_1.webp
+│   │       bush_1.webp.import
+│   │       fern_1.webp
+│   │       fern_1.webp.import
+│   │       flower_1.webp
+│   │       flower_1.webp.import
+│   │       grass_1.webp
+│   │       grass_1.webp.import
+│   │       grass_2.webp
+│   │       grass_2.webp.import
+│   │       grass_3.webp
+│   │       grass_3.webp.import
+│   │       ground_flowers_1.webp
+│   │       ground_flowers_1.webp.import
+│   │       rock_1.webp
+│   │       rock_1.webp.import
+│   │       tree_1.webp
+│   │       tree_1.webp.import
+│   │       tree_2.webp
+│   │       tree_2.webp.import
+│   │       vine_1.webp
+│   │       vine_1.webp.import
+│   │       vine_2.webp
+│   │       vine_2.webp.import
+│   │
+│   └───tilesets
+│           animated_tiles.tres
+│           campfire.mp3.import
+│           campfire.png
+│           campfire.png.import
+│           water_fountain.png
+│           water_fountain.png.import
+│
+├───Scripts
+└───Shaders
+
+C:\Users\Rob\Documents\minimal_server\client>

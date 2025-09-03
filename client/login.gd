@@ -8,6 +8,7 @@ extends Control
 @onready var error_label = $CenterContainer/VBoxContainer/ErrorLabel
 
 func _ready():
+	print("CLIENT: Login screen ready. Connecting signals.")
 	login_button.pressed.connect(_on_login_pressed)
 	register_button.pressed.connect(_on_register_pressed)
 	
@@ -22,7 +23,11 @@ func _ready():
 	login_button.disabled = true
 	register_button.disabled = true
 
+	print("CLIENT: Requesting connection to server...")
+	Server.connect_to_server()
+
 func _on_connected_to_server():
+	print("CLIENT: SUCCESS! Custom 'connected_to_server' signal received. Enabling buttons.")
 	error_label.text = "Connected. Please log in or register."
 	login_button.disabled = false
 	register_button.disabled = false

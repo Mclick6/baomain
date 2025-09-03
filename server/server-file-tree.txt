@@ -1,0 +1,128 @@
+C:\Users\Rob\Documents\minimal_server\server>tree /f
+Folder PATH listing
+Volume serial number is 0E62-4022
+C:.
+│   .gitattributes
+│   .gitignore
+│   chao_haven.db
+│   DatabaseManager.gd
+│   DatabaseManager.gd.uid
+│   icon.svg
+│   icon.svg.import
+│   project.godot
+│   server.gd
+│   server.gd.uid
+│   server.tscn
+│
+├───.godot
+│   │   .gdignore
+│   │   extension_list.cfg
+│   │   global_script_class_cache.cfg
+│   │   scene_groups_cache.cfg
+│   │   uid_cache.bin
+│   │
+│   ├───editor
+│   │       create_recent.Node
+│   │       DatabaseManager.gd-folding-5714a3649361cedabfb47e4dfbcb3840.cfg
+│   │       editor_layout.cfg
+│   │       favorites.Node
+│   │       filesystem_cache10
+│   │       filesystem_cache8
+│   │       filesystem_update4
+│   │       project_metadata.cfg
+│   │       recent_dirs
+│   │       script_editor_cache.cfg
+│   │       server.gd-folding-5e4e0f8060593779d3030462b142d15c.cfg
+│   │       server.tscn-editstate-c89a2950482f3a432bab03a0591e8d28.cfg
+│   │       server.tscn-folding-c89a2950482f3a432bab03a0591e8d28.cfg
+│   │
+│   ├───imported
+│   │       icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex
+│   │       icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5
+│   │
+│   └───shader_cache
+│       ├───CanvasOcclusionShaderGLES3
+│       │   └───c46a4f3559bef5f1a18a113c550b6f804caee92c7d3cafa58fa463e11aae6868
+│       ├───CanvasSdfShaderGLES3
+│       │   └───dcc154c2828ff3c101efe7358223c0461f1ef1a18026e28f9bdbdeb421a1aad5
+│       ├───CanvasShaderGLES3
+│       │   ├───7001bd55cc643dfb2ec129e370dd6c8d1b73f0e61fc38385cb6888d799f13873
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───733770f2277cfa157dc9f41454dd8440524ebe0f3ea3b3aa2476adbd7a8b5305
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───CopyShaderGLES3
+│       │   └───95bbacb3b920f1e467c9fe5461623ffc165d18ac78c5723d86ae9eb59870160c
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───CubemapFilterShaderGLES3
+│       │   ├───754d702162b1aa1bf3c197275fe99d4e901ea1a2c6af25970bec3a8b0224269e
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───c550e9b0f815559de057dbc2dbf27dc0e3de32ad74af862cc9f4e35e5c22942a
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───FeedShaderGLES3
+│       │   └───0a931d22f09b176cfabdf38add57f2a01c4001817315a2b7004f548c5d3dbd98
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───GlowShaderGLES3
+│       │   └───49588f1e005abe070671f6d84e9b4e3a668ed8fe9da4284a3e82158e436a10ad
+│       ├───ParticlesCopyShaderGLES3
+│       │   ├───5f2991539f79c3850a30aeb54701bacb8352c104a531798b20b1869ceda30c60
+│       │   └───88dcbcd715f00efd6a9cbedf0370c2e2e7c1b4bc2b9e697ad0c0005393f7171b
+│       ├───ParticlesShaderGLES3
+│       │   ├───e2bd0897c3730fad10a14a23f73c23c274249303ee81745bf40485aa851ec6e5
+│       │   └───fdc66d235bca7b4f727c358dce1eee7a226c2dbafdcfb6334013ee2302e19fcc
+│       ├───PostShaderGLES3
+│       │   ├───63c5eb113abef5c002551c71a12b986825d40d2d82f64a61af5b55da8758f754
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │
+│       │   └───6433a50baef2fa1c385c1b33f07c7be826be681edcd4ce5f56e9d80d52200bc8
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │
+│       ├───SceneShaderGLES3
+│       │   ├───48669697f261c203b28439a5ad9edaeddc660aac261fa7151365613dbce65b50
+│       │   │       0c9689a7dae2d011729a1e2cf29c71ecb4a7e8bb.cache
+│       │   │       6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │   │       e4803059b59d245bee29da2f87c302ecb830c09e.cache
+│       │   │
+│       │   └───a70c251965658e22c4578e90d9497dd9e708bc67cf94511f791996cdd628ff57
+│       │           0c9689a7dae2d011729a1e2cf29c71ecb4a7e8bb.cache
+│       │           6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache
+│       │           759922d24d18f6e93947155d0345545f9941ad7c.cache
+│       │
+│       ├───SkeletonShaderGLES3
+│       │   ├───9eb6c87fe4c89997aa96ea64794f3ff86e1ea2cebde153bd346ac111248f2a51
+│       │   └───c1ed8de2d0c8866dd7c9e6d675d702468b7d03a927739e8a79d47d2b08b867f4
+│       └───SkyShaderGLES3
+│           ├───4d9ae06eb92aad45be68854a8484aca26b1c7d6d72b277ce18c36d0a27dbd03a
+│           │       851ad615ab5772632d2dd49f5447ff21ea10b2fe.cache
+│           │
+│           └───5263a3e79b147fc8011bf70c625b01e803c85ddc7b0ef779a7851d0a6034c753
+│                   851ad615ab5772632d2dd49f5447ff21ea10b2fe.cache
+│
+├───addons
+│   └───godot-sqlite
+│       │   gdsqlite.gdextension
+│       │   gdsqlite.gdextension.uid
+│       │   godot-sqlite.gd
+│       │   godot-sqlite.gd.uid
+│       │   plugin.cfg
+│       │
+│       └───bin
+│               libgdsqlite.windows.template_debug.x86_64.dll
+│               libgdsqlite.windows.template_release.x86_64.dll
+│
+└───godot-sqlite-b198e823759f27db783056556526ac5f4d0fb302
+    └───addons
+        └───godot-sqlite
+            │   LICENSE.md
+            │
+            └───bin
+                    libgdsqlite.web.template_debug.wasm32.nothreads.wasm
+                    libgdsqlite.web.template_release.wasm32.nothreads.wasm
+
+
+C:\Users\Rob\Documents\minimal_server\server>

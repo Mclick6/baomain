@@ -4,7 +4,8 @@ extends Node
 var db_connection = SQLite.new()
 
 func _ready():
-	# This path is relative to the executable. The file will be created if it doesn't exist.
+	# This path is relative to the executable.
+	# The file will be created if it doesn't exist.
 	db_connection.path = "res://chao_haven.db"
 	
 	# Open the database file.
@@ -20,7 +21,6 @@ func _create_tables():
 	var accounts_query = "CREATE TABLE IF NOT EXISTS accounts (id INTEGER PRIMARY KEY, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, created_at TEXT NOT NULL);"
 	var player_data_query = "CREATE TABLE IF NOT EXISTS player_data (id INTEGER PRIMARY KEY, account_id INTEGER UNIQUE NOT NULL, rings INTEGER NOT NULL, inventory TEXT, FOREIGN KEY(account_id) REFERENCES accounts(id));"
 	var chao_query = "CREATE TABLE IF NOT EXISTS chao (id INTEGER PRIMARY KEY, player_id INTEGER NOT NULL, chao_name TEXT NOT NULL, stats TEXT, FOREIGN KEY(player_id) REFERENCES player_data(id));"
-	
 	db_connection.query(accounts_query)
 	db_connection.query(player_data_query)
 	db_connection.query(chao_query)
@@ -34,7 +34,7 @@ func _hash_password(password: String) -> String:
 func register_account(username: String, password: String) -> Dictionary:
 	var check_query = "SELECT id FROM accounts WHERE username = ?;"
 	if db_connection.query_with_bindings(check_query, [username]):
-		var result = db_connection.get_result()
+		var result = db_connection.query_result
 		if not result.is_empty():
 			return {"success": false, "reason": "Username is already taken."}
 
@@ -44,7 +44,7 @@ func register_account(username: String, password: String) -> Dictionary:
 	if db_connection.query_with_bindings(insert_query, [username, password_hash]):
 		var get_id_query = "SELECT id FROM accounts WHERE username = ?;"
 		if db_connection.query_with_bindings(get_id_query, [username]):
-			var new_account_id = db_connection.get_result()[0]["id"]
+			var new_account_id = db_connection.query_result[0]["id"]
 			
 			var default_inventory = {"egg": 1, "nut": 5, "ball": 0}
 			var player_data_query = "INSERT INTO player_data (account_id, rings, inventory) VALUES (?, ?, ?);"
@@ -58,7 +58,7 @@ func register_account(username: String, password: String) -> Dictionary:
 func login(username: String, password: String) -> Dictionary:
 	var query = "SELECT id, password_hash FROM accounts WHERE username = ?;"
 	if db_connection.query_with_bindings(query, [username]):
-		var result = db_connection.get_result()
+		var result = db_connection.query_result
 		if result.is_empty():
 			print("Login failed: User '%s' not found." % username)
 			return {}
@@ -77,7 +77,7 @@ func login(username: String, password: String) -> Dictionary:
 func load_player_data(account_id: int) -> Dictionary:
 	var query = "SELECT rings, inventory FROM player_data WHERE account_id = ?;"
 	if db_connection.query_with_bindings(query, [account_id]):
-		var result = db_connection.get_result()
+		var result = db_connection.query_result
 		if result.is_empty():
 			return {}
 

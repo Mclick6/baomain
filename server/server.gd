@@ -31,7 +31,6 @@ func _on_peer_connected(id):
 func _on_peer_disconnected(id):
 	print("Peer disconnected: %d" % id)
 	if sessions.has(id):
-		# CORRECTED: The get() function now has the correct argument.
 		var username = sessions[id].get("username", "A player")
 		sessions[id].queue_free()
 		sessions.erase(id)
@@ -40,10 +39,12 @@ func _on_peer_disconnected(id):
 func _broadcast_chat_message(message: String):
 	for peer_id in sessions:
 		if sessions[peer_id].has("username"):
+			# This is a server-to-client RPC, so we use rpc_id()
 			rpc_id(peer_id, "_rpc_receive_chat_message", message)
 
-# --- SERVER-SIDE RPC API ---
-@rpc("call_remote", "reliable")
+# --- SERVER-SIDE RPC API (Called by Clients) ---
+# CORRECTED: Annotation changed to "any_peer" to allow calls from any client.
+@rpc("any_peer", "reliable")
 func _request_registration(username, password):
 	var sender_id = multiplayer.get_remote_sender_id()
 	print("Registration request from peer %d for user '%s'" % [sender_id, username])
@@ -55,7 +56,7 @@ func _request_registration(username, password):
 	else:
 		rpc_id(sender_id, "_rpc_registration_failure", result.get("reason", "Unknown error."))
 
-@rpc("call_remote", "reliable")
+@rpc("any_peer", "reliable")
 func _request_login(username, password):
 	var sender_id = multiplayer.get_remote_sender_id()
 	print("Login request from peer %d for user '%s'" % [sender_id, username])
@@ -71,7 +72,7 @@ func _request_login(username, password):
 	else:
 		rpc_id(sender_id, "_rpc_login_failure", "Invalid credentials.")
 
-@rpc("call_remote", "reliable")
+@rpc("any_peer", "reliable")
 func _request_chat_message(message_text):
 	var sender_id = multiplayer.get_remote_sender_id()
 	var username = "Guest"
@@ -81,3 +82,27 @@ func _request_chat_message(message_text):
 	
 	var formatted_message = "%s: %s" % [username, message_text]
 	_broadcast_chat_message(formatted_message)
+
+# --- CLIENT-SIDE RPC Stubs (for checksum matching) ---
+# ADDED: These functions are only implemented on the client. They exist here
+# as empty stubs so the RPC interface matches the client's script.
+
+@rpc("call_local", "reliable")
+func _rpc_login_success(_player_data):
+	pass
+
+@rpc("call_local", "reliable")
+func _rpc_login_failure(_reason):
+	pass
+
+@rpc("call_local", "reliable")
+func _rpc_registration_success():
+	pass
+
+@rpc("call_local", "reliable")
+func _rpc_registration_failure(_reason):
+	pass
+
+@rpc("call_local", "reliable")
+func _rpc_receive_chat_message(_message):
+	pass
