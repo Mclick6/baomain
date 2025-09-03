@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6dqexwvya3s1"]
+
+[ext_resource type="Script" uid="uid://c7r3xmo4skxs6" path="res://main.gd" id="1_a73wq"]
+[ext_resource type="PackedScene" uid="uid://2hrwlt0qtbdy" path="res://login.tscn" id="2_b4cde"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_a73wq")
+
+[node name="GameWorldContainer" type="Node" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LoginScreen" parent="UI" instance=ExtResource("2_b4cde")]
+script = null
