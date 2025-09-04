@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://2hrwlt0qtbdy"]
+[gd_scene load_steps=4 format=3 uid="uid://2hrwlt0qtbdy"]
 
 [ext_resource type="Script" uid="uid://5q5kra8tplv8" path="res://login.gd" id="1_g250l"]
+[ext_resource type="AudioStream" uid="uid://drcoravnbrs7c" path="res://imgs/backgrounds/login/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="2_xlo4h"]
+[ext_resource type="VideoStream" uid="uid://deqhvovtsnmxu" path="res://imgs/backgrounds/login/241824.ogv" id="3_xlo4h"]
 
 [node name="LoginScreen" type="Control"]
 layout_mode = 3
@@ -11,6 +13,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g250l")
 
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xlo4h")
+volume_db = -16.61
+autoplay = true
+parameters/looping = true
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,12 +26,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -135.0
 offset_top = -107.0
-offset_right = 100.0
+offset_right = 65.0
 offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.73942, 1.08879)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -36,6 +45,8 @@ text = "Username"
 [node name="UsernameField" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Enter username"
+expand_to_text_length = true
+emoji_menu_enabled = false
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -44,6 +55,8 @@ text = "Password"
 [node name="PasswordField" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Enter password"
+expand_to_text_length = true
+emoji_menu_enabled = false
 secret = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -64,14 +77,14 @@ layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="BackgroundRect" type="TextureRect" parent="."]
-z_index = -30
+[node name="BackgroundVideo" type="VideoStreamPlayer" parent="."]
+z_index = -31
 layout_mode = 0
-offset_right = 1151.0
-offset_bottom = 645.0
-
-[node name="BackgroundTimer" type="Timer" parent="."]
-wait_time = 1.236
-autostart = true
-
-[connection signal="timeout" from="BackgroundTimer" to="." method="_on_background_timer_timeout"]
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.500021, 0.49995)
+mouse_filter = 2
+stream = ExtResource("3_xlo4h")
+volume_db = -80.0
+autoplay = true
+loop = true

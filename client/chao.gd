@@ -150,6 +150,21 @@ func _handle_moving_to_treadmill(_delta: float):
 	else:
 		move_and_slide()
 
+# --- ADD THIS ENTIRE FUNCTION ---
+func move_to_treadmill(treadmill: Node):
+	if not is_instance_valid(treadmill):
+		return
+	
+	# Forcefully interrupt the previous task
+	if state == "moving_to_item" and is_instance_valid(target_item):
+		target_item.remove_meta("reserved_by")
+	
+	# Give the new command
+	target_item = treadmill
+	target_position = treadmill.position
+	state = "moving_to_treadmill"
+# -----------------------------
+
 func _find_nearest_food() -> Node:
 	var foods = get_tree().get_nodes_in_group("items").filter(func(item): return item.get_meta("is_food", false) and not item.is_in_group("egg") and not item.has_meta("reserved_by"))
 	if foods.is_empty():
@@ -238,13 +253,6 @@ func _kick_ball(ball: Node):
 	state = "idle"
 	$AnimationPlayer.play("happy")
 
-func move_to_treadmill(treadmill: Node):
-	if not is_instance_valid(treadmill):
-		return
-	target_item = treadmill
-	target_position = treadmill.position
-	state = "moving_to_treadmill"
-
 func _update_animation():
 	var anim = "idle"
 	var chao_data = ChaoManager.get_chao_data(chao_name)
@@ -273,10 +281,7 @@ func deserialize(data: Dictionary):
 	if data.has("position"):
 		position = Vector2(data["position"].x, data["position"].y)
 	
-	# CORRECTED: This now directly and completely loads the stats from the server
 	if data.has("stats"):
-		# The .duplicate(true) makes a deep copy to ensure each Chao has its
-		# own unique stats dictionary.
 		stats = data["stats"].duplicate(true)
 		
 	_update_animation()

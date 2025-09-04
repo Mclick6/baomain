@@ -5,20 +5,13 @@ var chat_container: PanelContainer
 var chat_text: RichTextLabel
 var input_field: LineEdit
 var toggle_button: Button
+var menu_button: Button
 var chat_layer: CanvasLayer
 
 func _ready():
-	# Completely disable this node and its children from processing or getting input.
-	self.process_mode = Node.PROCESS_MODE_DISABLED
-	
-	# Listen for a successful login to re-enable and build the UI.
 	Server.login_success.connect(_setup_and_show_chat)
 
 func _setup_and_show_chat(_player_data):
-	# Re-enable processing and input for this node and its children.
-	self.process_mode = Node.PROCESS_MODE_INHERIT
-	
-	# Now, create and show the UI.
 	chat_layer = CanvasLayer.new()
 	chat_layer.name = "ChatLayer"
 	chat_layer.layer = 50
@@ -45,7 +38,10 @@ func _setup_and_show_chat(_player_data):
 	
 	input_field = LineEdit.new()
 	input_field.name = "ChatInput"
+	# --- ADD THESE LINES BACK ---
 	input_field.placeholder_text = "Type here..."
+	input_field.editable = true
+	# --------------------------
 	input_field.custom_minimum_size.y = 30
 	input_field.text_submitted.connect(_on_chat_input_submitted)
 	vbox.add_child(input_field)
@@ -58,10 +54,21 @@ func _setup_and_show_chat(_player_data):
 	toggle_button.size = Vector2(120, 30)
 	toggle_button.pressed.connect(_on_toggle_chat_pressed)
 	chat_layer.add_child(toggle_button)
+	
+	menu_button = Button.new()
+	menu_button.name = "MenuButton"
+	menu_button.text = "Menu"
+	menu_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	menu_button.position = Vector2(-260, 10)
+	menu_button.size = Vector2(120, 30)
+	menu_button.pressed.connect(_on_menu_button_pressed)
+	chat_layer.add_child(menu_button)
 
 	add_chat_message("Welcome to Egg Bloom Haven!")
-
 	Server.chat_message_received.connect(add_chat_message)
+
+func _on_menu_button_pressed():
+	PauseManager.toggle_pause_menu()
 
 func add_chat_message(message: String):
 	if is_instance_valid(chat_text):
@@ -70,7 +77,6 @@ func add_chat_message(message: String):
 func _on_chat_input_submitted(text: String):
 	if text.strip_edges() != "":
 		Server.send_chat_message(text)
-		
 		input_field.clear()
 		input_field.grab_focus()
 

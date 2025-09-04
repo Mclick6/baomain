@@ -1,17 +1,18 @@
 [gd_scene load_steps=22 format=3 uid="uid://ca26f2u38jrcx"]
 
-[ext_resource type="Script" uid="uid://cjf860oe3uad4" path="res://chao.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://0symwfw5tox4" path="res://imgs/sprites/chao_idle.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://jh0wlxraeekv" path="res://imgs/sprites/chao_happy.png" id="4_7g0ps"]
-[ext_resource type="Texture2D" uid="uid://c057vmc8amrtt" path="res://imgs/sprites/chao_sad.png" id="6_svemm"]
-[ext_resource type="Texture2D" uid="uid://dmvkyu5it4wps" path="res://imgs/sprites/chao_left.png" id="7_egtej"]
-[ext_resource type="Texture2D" uid="uid://bgto0d8p14if8" path="res://imgs/sprites/chao_right.png" id="8_hfr5q"]
-[ext_resource type="Texture2D" uid="uid://bagq8aajbdd72" path="res://imgs/sprites/chao_down.png" id="9_ae121"]
-[ext_resource type="Texture2D" uid="uid://dkvh8u7sag8" path="res://imgs/sprites/chao_up.png" id="9_allse"]
-[ext_resource type="Texture2D" uid="uid://diyqvqteuwkoc" path="res://imgs/sprites/chao_run.png" id="10_ae121"]
+[ext_resource type="Script" uid="uid://cjf860oe3uad4" path="res://chao.gd" id="1_d2h7h"]
+[ext_resource type="Texture2D" uid="uid://0symwfw5tox4" path="res://imgs/sprites/chao_idle.png" id="2_syi7g"]
+[ext_resource type="Texture2D" uid="uid://jh0wlxraeekv" path="res://imgs/sprites/chao_happy.png" id="3_q7j0g"]
+[ext_resource type="Texture2D" uid="uid://c057vmc8amrtt" path="res://imgs/sprites/chao_sad.png" id="4_sbu22"]
+[ext_resource type="Texture2D" uid="uid://dmvkyu5it4wps" path="res://imgs/sprites/chao_left.png" id="5_86l1f"]
+[ext_resource type="Texture2D" uid="uid://bgto0d8p14if8" path="res://imgs/sprites/chao_right.png" id="6_opxhm"]
+[ext_resource type="Texture2D" uid="uid://bagq8aajbdd72" path="res://imgs/sprites/chao_down.png" id="7_vtpch"]
+[ext_resource type="Texture2D" uid="uid://dkvh8u7sag8" path="res://imgs/sprites/chao_up.png" id="8_28p4f"]
+[ext_resource type="Texture2D" uid="uid://diyqvqteuwkoc" path="res://imgs/sprites/chao_run.png" id="9_40787"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vltbn"]
-radius = 30.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 25.0
+height = 60.0
 
 [sub_resource type="Animation" id="Animation_svemm"]
 resource_name = "RESET"
@@ -25,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2")]
+"values": [ExtResource("2_syi7g")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -53,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("9_ae121"), ExtResource("9_ae121")]
+"values": [ExtResource("7_vtpch"), ExtResource("7_vtpch")]
 }
 
 [sub_resource type="Animation" id="Animation_fxxmt"]
@@ -70,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_7g0ps")]
+"values": [ExtResource("3_q7j0g")]
 }
 
 [sub_resource type="Animation" id="Animation_vltbn"]
@@ -87,7 +88,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2")]
+"values": [ExtResource("2_syi7g")]
 }
 
 [sub_resource type="Animation" id="Animation_hfr5q"]
@@ -104,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("7_egtej"), ExtResource("7_egtej")]
+"values": [ExtResource("5_86l1f"), ExtResource("5_86l1f")]
 }
 
 [sub_resource type="Animation" id="Animation_allse"]
@@ -121,7 +122,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("8_hfr5q"), ExtResource("8_hfr5q")]
+"values": [ExtResource("6_opxhm"), ExtResource("6_opxhm")]
 }
 
 [sub_resource type="Animation" id="Animation_a3l5d"]
@@ -138,7 +139,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.566667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("10_ae121"), ExtResource("10_ae121")]
+"values": [ExtResource("9_40787"), ExtResource("9_40787")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -167,7 +168,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_svemm")]
+"values": [ExtResource("4_sbu22")]
 }
 
 [sub_resource type="Animation" id="Animation_ae121"]
@@ -184,7 +185,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("9_allse"), ExtResource("9_allse")]
+"values": [ExtResource("8_28p4f"), ExtResource("8_28p4f")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_egtej"]
@@ -201,21 +202,22 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_allse"]
-radius = 1000.0
+radius = 100.0
 
 [node name="Chao" type="CharacterBody2D"]
 z_index = 1
-script = ExtResource("1")
+script = ExtResource("1_d2h7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2")
+texture = ExtResource("2_syi7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_body")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_vltbn")
+shape = SubResource("CapsuleShape2D_body")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -224,15 +226,13 @@ libraries = {
 autoplay = "idle"
 
 [node name="BallDetectionArea" type="Area2D" parent="."]
-light_mask = 3
-visibility_layer = 0
 collision_layer = 0
-collision_mask = 3
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BallDetectionArea"]
 shape = SubResource("CircleShape2D_allse")
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_ball_detection_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_ball_detection_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_input_event"]
+[connection signal="area_entered" from="BallDetectionArea" to="." method="_on_ball_detection_area_entered"]
+[connection signal="area_exited" from="BallDetectionArea" to="." method="_on_ball_detection_area_exited"]

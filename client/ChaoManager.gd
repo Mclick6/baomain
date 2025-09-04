@@ -1,10 +1,10 @@
-# ChaoManager.gd
 extends Node
 
 var chao_list: Array = []
 var chao_counter: int = 0
 
 # --- DATA MANAGEMENT ---
+
 func get_chao_data(chao_name: String) -> Dictionary:
 	for chao in chao_list:
 		if chao.get("chao_name") == chao_name:
@@ -16,9 +16,22 @@ func update_chao_stat(chao_name: String, stat: String, value):
 	if chao_data.is_empty(): return
 	
 	if chao_data["stats"].has(stat):
+		# Handle stat progress/level dictionaries
 		if chao_data["stats"][stat] is Dictionary:
-			chao_data["stats"][stat]["progress"] += value
-		else:
+			var stat_dict = chao_data["stats"][stat]
+			stat_dict["progress"] += value
+			
+			# --- THIS IS THE FIX ---
+			# While progress is 100 or more, level up and reduce progress.
+			while stat_dict["progress"] >= 100.0:
+				stat_dict["level"] += 1
+				stat_dict["progress"] -= 100.0
+				if ChatManager:
+					var message = "Chao %s leveled up %s to Level %d!" % [chao_name, stat.capitalize(), stat_dict["level"]]
+					ChatManager.add_chat_message(message)
+			# ---------------------
+
+		else: # Handle simple value stats like mood/belly
 			chao_data["stats"][stat] = clamp(chao_data["stats"][stat] + value, 0.0, 100.0)
 
 func create_and_add_new_chao(pos: Vector2) -> Dictionary:
@@ -35,7 +48,6 @@ func create_and_add_new_chao(pos: Vector2) -> Dictionary:
 	chao_list.append(new_chao)
 	return new_chao
 
-# ADDED THIS FUNCTION
 func rename_chao(old_name: String, new_name: String):
 	var chao_data = get_chao_data(old_name)
 	if not chao_data.is_empty():
@@ -55,5 +67,5 @@ func spawn_chao_in_hub(hub_node):
 		chao.deserialize(chao_data)
 		chao_container.add_child(chao)
 
-func capture_chao_from_hub(hub_node):
+func capture_chao_from_hub(_hub_node):
 	pass

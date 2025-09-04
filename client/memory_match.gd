@@ -139,7 +139,6 @@ func _game_complete():
 	rings_earned += 50
 	if Global:
 		Global.rings += rings_earned
-		ChaoManager.save_to_file()
 	ChatManager.add_chat_message("Congratulations! You completed the memory game with a score of %d! +50 ring bonus" % score)
 	var restart_button = Button.new()
 	restart_button.text = "Play Again"
@@ -153,7 +152,7 @@ func _game_complete():
 func _on_back_pressed():
 	if Global:
 		Global.rings += rings_earned
-		ChaoManager.save_to_file()
+	
 	var garden = get_tree().get_root().get_node_or_null("Garden")
 	if garden:
 		garden.update_inventory_ui()
