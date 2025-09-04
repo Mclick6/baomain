@@ -9,7 +9,7 @@ signal registration_success
 signal registration_failure(reason)
 signal chat_message_received(message)
 
-const SERVER_IP = "127.0.0.1"
+const SERVER_IP = "64.138.224.7"
 const DEFAULT_PORT = 7777
 
 var peer = ENetMultiplayerPeer.new()

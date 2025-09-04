@@ -5,10 +5,21 @@ var chat_container: PanelContainer
 var chat_text: RichTextLabel
 var input_field: LineEdit
 var toggle_button: Button
+var chat_layer: CanvasLayer
 
 func _ready():
-	# --- Your UI Code (Preserved) ---
-	var chat_layer = CanvasLayer.new()
+	# Completely disable this node and its children from processing or getting input.
+	self.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# Listen for a successful login to re-enable and build the UI.
+	Server.login_success.connect(_setup_and_show_chat)
+
+func _setup_and_show_chat(_player_data):
+	# Re-enable processing and input for this node and its children.
+	self.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	# Now, create and show the UI.
+	chat_layer = CanvasLayer.new()
 	chat_layer.name = "ChatLayer"
 	chat_layer.layer = 50
 	add_child(chat_layer)
@@ -50,7 +61,6 @@ func _ready():
 
 	add_chat_message("Welcome to Egg Bloom Haven!")
 
-	# MODIFIED: Connect to the 'Server' singleton's signal
 	Server.chat_message_received.connect(add_chat_message)
 
 func add_chat_message(message: String):
@@ -59,12 +69,12 @@ func add_chat_message(message: String):
 
 func _on_chat_input_submitted(text: String):
 	if text.strip_edges() != "":
-		# MODIFIED: Send the message through the 'Server' singleton
 		Server.send_chat_message(text)
 		
 		input_field.clear()
 		input_field.grab_focus()
 
 func _on_toggle_chat_pressed():
-	chat_container.visible = not chat_container.visible
-	toggle_button.text = "Show Chat" if not chat_container.visible else "Hide Chat"
+	if is_instance_valid(chat_container):
+		chat_container.visible = not chat_container.visible
+		toggle_button.text = "Show Chat" if not chat_container.visible else "Hide Chat"

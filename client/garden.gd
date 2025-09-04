@@ -310,4 +310,4 @@ func _on_chao_stats_button_pressed():
 		if ChatManager: ChatManager.add_chat_message("Chao stats panel closed")
 
 func _on_school_button_pressed():
-	get_tree().change_scene_to_file("res://school.tscn")
+	Loader.load_scene("res://school.tscn")

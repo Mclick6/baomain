@@ -6,9 +6,24 @@ extends Control
 @onready var login_button = $CenterContainer/VBoxContainer/HBoxContainer/LoginButton
 @onready var register_button = $CenterContainer/VBoxContainer/HBoxContainer/RegisterButton
 @onready var error_label = $CenterContainer/VBoxContainer/ErrorLabel
+@onready var background_rect: TextureRect = $BackgroundRect
+var background_textures: Array[Texture2D] = [
+	preload("res://imgs/backgrounds/login/login-background-1.png"),
+	preload("res://imgs/backgrounds/login/login-background-2.png"),
+	preload("res://imgs/backgrounds/login/login-background-3.png"),
+	preload("res://imgs/backgrounds/login/login-background-4.png")
+]
+var current_background_index: int = 0
 
 func _ready():
-	print("CLIENT: Login screen ready. Connecting signals.")
+	# --- Set the initial background image and fix the input issue ---
+	if not background_textures.is_empty():
+		background_rect.texture = background_textures[0]
+	
+	# **THIS IS THE FIX:** Make the background ignore mouse clicks.
+	background_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# --- Existing login logic ---
 	login_button.pressed.connect(_on_login_pressed)
 	register_button.pressed.connect(_on_register_pressed)
 	
@@ -23,11 +38,23 @@ func _ready():
 	login_button.disabled = true
 	register_button.disabled = true
 
-	print("CLIENT: Requesting connection to server...")
 	Server.connect_to_server()
 
+func _on_background_timer_timeout():
+	if background_textures.size() < 2:
+		return
+
+	var tween = create_tween()
+	tween.tween_property(background_rect, "modulate:a", 1.0, 1.0)
+	tween.tween_callback(func():
+		current_background_index = (current_background_index + 1) % background_textures.size()
+		background_rect.texture = background_textures[current_background_index]
+	)
+	tween.tween_property(background_rect, "modulate:a", 1.0, 1.0)
+
+# --- The rest of your login functions remain the same ---
+
 func _on_connected_to_server():
-	print("CLIENT: SUCCESS! Custom 'connected_to_server' signal received. Enabling buttons.")
 	error_label.text = "Connected. Please log in or register."
 	login_button.disabled = false
 	register_button.disabled = false

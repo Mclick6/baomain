@@ -1,18 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://28krpaqmterp"]
+[gd_scene load_steps=9 format=3 uid="uid://28krpaqmterp"]
 
 [ext_resource type="Script" uid="uid://b4oviq16if4vl" path="res://minigames.gd" id="1_qvv0w"]
 [ext_resource type="Texture2D" uid="uid://du3taqmidsxdq" path="res://imgs/backgrounds/parallax_forest_pack/layers/parallax-forest-back-trees.png" id="2_n6fsv"]
 [ext_resource type="Texture2D" uid="uid://g4itjr0gpgqr" path="res://level/background/clouds_1.webp" id="4"]
 [ext_resource type="Texture2D" uid="uid://c3srrhnhr4fs2" path="res://imgs/backgrounds/parallax_forest_pack/layers/parallax-forest-lights.png" id="5_3x32w"]
 [ext_resource type="Texture2D" uid="uid://didpj7ds0mpfo" path="res://imgs/backgrounds/parallax_forest_pack/layers/parallax-forest-middle-trees.png" id="5_n6fsv"]
-[ext_resource type="Texture2D" uid="uid://bg4i2572y45nu" path="res://level/props/grass_1.webp" id="6"]
 [ext_resource type="Texture2D" uid="uid://bfvqb5x2tgdqv" path="res://imgs/backgrounds/parallax_forest_pack/layers/parallax-forest-front-trees.png" id="6_3x32w"]
-[ext_resource type="Texture2D" uid="uid://cptxol187e18u" path="res://level/props/grass_2.webp" id="7"]
-[ext_resource type="Texture2D" uid="uid://cw8b66qm55hj" path="res://level/props/grass_3.webp" id="8"]
-[ext_resource type="Texture2D" uid="uid://d0er52cuwuxw7" path="res://level/props/flower_1.webp" id="9"]
-[ext_resource type="Texture2D" uid="uid://eeitd2vus25o" path="res://level/background/distant_platforms_1.webp" id="9_fapnr"]
-[ext_resource type="Texture2D" uid="uid://yd25nr4fnsqp" path="res://level/props/rock_1.webp" id="10"]
 [ext_resource type="AudioStream" uid="uid://obj6r26dnjwa" path="res://audio/minigame/minigamelobby.mp3" id="11_w57nf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wy7l4"]
+font_size = 22
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_offset = Vector2(3, 3)
 
 [node name="Minigames" type="Node2D"]
 script = ExtResource("1_qvv0w")
@@ -21,99 +22,58 @@ script = ExtResource("1_qvv0w")
 scroll_ignore_camera_zoom = true
 
 [node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(1152, 0)
+position = Vector2(25, -699)
+scale = Vector2(3, 3)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1000, 0)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
-position = Vector2(-527, -2)
-scale = Vector2(4.56223, 6.5375)
+position = Vector2(580.667, 453.167)
+scale = Vector2(4.32108, 1.41042)
 texture = ExtResource("2_n6fsv")
-centered = false
 
 [node name="CloudsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-762, 384)
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(1152, 0)
+position = Vector2(25, -699)
+scale = Vector2(3, 3)
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(1000, 0)
 
 [node name="Clouds" type="Sprite2D" parent="ParallaxBackground/CloudsLayer"]
-position = Vector2(0, -255.06)
-scale = Vector2(10.7602, 2.99266)
+position = Vector2(684.333, 436.667)
+scale = Vector2(8.08854, 1.48438)
 texture = ExtResource("4")
-centered = false
 
-[node name="DistantPlatformsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1152, 0)
+[node name="LightsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(25, -699)
+scale = Vector2(3, 3)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1000, 0)
 
-[node name="DistantPlatforms" type="Sprite2D" parent="ParallaxBackground/DistantPlatformsLayer"]
-position = Vector2(-78, 903)
-scale = Vector2(0.732143, 0.5625)
-texture = ExtResource("9_fapnr")
-centered = false
-
-[node name="Light" type="Sprite2D" parent="ParallaxBackground/DistantPlatformsLayer"]
-position = Vector2(-529, 94)
-scale = Vector2(4.9937, 8.17707)
+[node name="Light" type="Sprite2D" parent="ParallaxBackground/LightsLayer"]
+position = Vector2(689.667, 483)
+scale = Vector2(3.97549, 1.7875)
 texture = ExtResource("5_3x32w")
-centered = false
 
-[node name="Tree2" type="Sprite2D" parent="ParallaxBackground/DistantPlatformsLayer"]
-position = Vector2(113, 459)
-scale = Vector2(4.28305, 4.58125)
-texture = ExtResource("6_3x32w")
+[node name="MiddleTreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(25, -699)
+scale = Vector2(3, 3)
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1000, 0)
 
-[node name="TreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-12, 894)
-motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Tree1" type="Sprite2D" parent="ParallaxBackground/TreesLayer"]
-position = Vector2(65, -337.016)
-scale = Vector2(4.69896, 5.7873)
+[node name="Tree1" type="Sprite2D" parent="ParallaxBackground/MiddleTreesLayer"]
+position = Vector2(694.667, 450)
+scale = Vector2(3.77696, 1.3875)
 texture = ExtResource("5_n6fsv")
 
-[node name="GrassLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-position = Vector2(-91, 884)
-motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(1152, 0)
+[node name="FrontTreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(25, -699)
+scale = Vector2(3, 3)
+motion_mirroring = Vector2(1000, 0)
 
-[node name="Grass1" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
-position = Vector2(1, -4)
-texture = ExtResource("6")
-
-[node name="Grass2" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
-position = Vector2(301, -4)
-texture = ExtResource("7")
-
-[node name="Grass3" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
-position = Vector2(601, -4)
-texture = ExtResource("8")
-
-[node name="FlowersLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
-motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Flower1" type="Sprite2D" parent="ParallaxBackground/FlowersLayer"]
-position = Vector2(461.132, 1011.41)
-texture = ExtResource("9")
-
-[node name="Flower2" type="Sprite2D" parent="ParallaxBackground/FlowersLayer"]
-position = Vector2(197.042, 1029.1)
-texture = ExtResource("9")
-
-[node name="RocksLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Rock1" type="Sprite2D" parent="ParallaxBackground/RocksLayer"]
-position = Vector2(393, 921)
-texture = ExtResource("9_fapnr")
-
-[node name="Rock2" type="Sprite2D" parent="ParallaxBackground/RocksLayer"]
-position = Vector2(88, 894)
-texture = ExtResource("10")
+[node name="Tree2" type="Sprite2D" parent="ParallaxBackground/FrontTreesLayer"]
+position = Vector2(679.333, 450.667)
+scale = Vector2(3.67157, 1.37917)
+texture = ExtResource("6_3x32w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -123,55 +83,51 @@ anchor_mode = 0
 z_index = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
-[node name="MemoryMatchButton" type="Button" parent="UI"]
-offset_left = 398.0
-offset_top = 314.0
-offset_right = 750.0
-offset_bottom = 394.0
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Minigames"
+label_settings = SubResource("LabelSettings_wy7l4")
+horizontal_alignment = 1
+
+[node name="MemoryMatchButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Memory Match"
 
-[node name="PeggleGameButton" type="Button" parent="UI/MemoryMatchButton"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 79.0
-offset_right = 343.0
-offset_bottom = 168.0
-text = "Peggle
-"
+[node name="PeggleGameButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Peggle"
 
-[node name="BackButton" type="Button" parent="UI"]
-offset_left = 399.0
-offset_top = 482.0
-offset_right = 751.0
-offset_bottom = 562.0
+[node name="BackButton" type="Button" parent="UI/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Back to Garden"
 
-[node name="Label" type="Label" parent="UI"]
-visible = false
-offset_left = 100.0
-offset_right = 500.0
-offset_bottom = 23.0
-text = "Egg Bloom Haven"
-
-[node name="MinigameLobbyAudio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(513, 111)
+[node name="MinigameLobbyAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_w57nf")
-volume_db = -17.542
-pitch_scale = 0.74
+volume_db = -15.0
+pitch_scale = 0.8
 autoplay = true
 
-[node name="CampfireAudio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(600, 600)
-volume_db = -10.0
-autoplay = true
-
-[node name="FountainAudio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(900, 600)
-volume_db = -10.0
-autoplay = true
-
-[connection signal="pressed" from="UI/MemoryMatchButton" to="." method="_on_memory_match_button_pressed"]
-[connection signal="pressed" from="UI/MemoryMatchButton/PeggleGameButton" to="." method="_on_peggle_game_button_pressed"]
-[connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/MemoryMatchButton" to="." method="_on_memory_match_button_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/PeggleGameButton" to="." method="_on_peggle_game_button_pressed"]
+[connection signal="pressed" from="UI/CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://y4sf31j2m1ao"]
+[gd_scene load_steps=4 format=3 uid="uid://y4sf31j2m1ao"]
 
 [ext_resource type="Script" uid="uid://cucthmwf7iyxf" path="res://Loader.gd" id="1_mggpi"]
+[ext_resource type="Texture2D" uid="uid://ckrhkinwgxxrq" path="res://imgs/backgrounds/parallax_mountain_pack/layers/parallax-mountain-bg.png" id="2_htrc2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_htrc2"]
+font_size = 34
+font_color = Color(0, 0, 0, 1)
 
 [node name="loading_screen" type="Control"]
 layout_mode = 3
@@ -11,6 +16,16 @@ script = ExtResource("1_mggpi")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 499.0
+offset_top = 142.0
+offset_right = 657.0
+offset_bottom = 189.0
 text = "Loading..."
+label_settings = SubResource("LabelSettings_htrc2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
+texture = ExtResource("2_htrc2")

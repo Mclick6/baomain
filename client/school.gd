@@ -69,8 +69,7 @@ func _on_train_swim_pressed():
 	
 	if ChatManager and is_instance_valid(ChatManager):
 		ChatManager.add_chat_message("Trained swim for Chao %s" % selected_chao)
-
-	ChaoManager.save_to_file()
+	
 	teacher_swim_overlay.visible = false
 	selected_chao = ""
 
@@ -85,8 +84,7 @@ func _on_heal_pressed():
 	
 	if ChatManager and is_instance_valid(ChatManager):
 		ChatManager.add_chat_message("Healed Chao %s!" % selected_chao)
-
-	ChaoManager.save_to_file()
+	
 	nurse_overlay.visible = false
 	selected_chao = ""
 
@@ -108,8 +106,7 @@ func _update_global_chao_stats_by_name(chao_name: String, stat_name: String, val
 			break
 
 func _on_back_button_pressed():
-	ChaoManager.capture_chao_from_hub(self)
-	get_tree().change_scene_to_file("res://garden.tscn")
+	Loader.load_scene("res://garden.tscn")
 
 func _exit_tree():
 	ChaoManager.capture_chao_from_hub(self)
